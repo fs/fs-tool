@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# Usage: fs pulls
+# Summary: Open Flatstack pull requests
+# Help: Open public Flatstack pull requests by default. Available subcommands:
+#
+#    fs pulls                       # opens public Flatstack pull requests on github
+#    fs pulls private               # opens private Flatstack pull requests on github
+
+set -e
+
+# Provide fs completions
+if [ "$1" = "--complete" ]; then
+  echo public
+  echo private
+else
+  case $1 in
+    "" | "public")
+    open "https://github.com/organizations/fs/dashboard/pulls/public"
+    ;;
+    "private")
+    open "https://github.com/organizations/fs/dashboard/pulls/private"
+    ;;
+  esac
+fi

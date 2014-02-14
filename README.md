@@ -77,3 +77,11 @@ communicate       infrastructure    open_space_rules  printers
 communication     learn             openspace         rollbar
 ```
 
+
+### Other commands
+
+```bash
+$ fs issues                      # opens Flatstack issues
+$ fs pulls (fs prs)              # opens public Flastack pull requests on github
+$ fs pulls private               # opens private Flatstack pull requests on github
+```

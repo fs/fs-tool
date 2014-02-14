@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
-# Usage: fs gh [subcommand] 
+# Usage: fs gh [subcommand]
 # Summary: Open current github repo in browser
 # Help: This can be used to open current repo on github. Available subcommands:
+#
 #    fs gh                          # opens current repo on github
 #    fs gh pulls (fs gh prs)        # opens current repo's pull requests on github
 #    fs gh issues (fs gh i)         # opens current repo's issues on github
