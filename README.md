@@ -50,18 +50,18 @@ $ fs gh issues (fs gh i)         # opens current repo's issues on github
 $ fs gh search (fs gh s) <query> # search in current repo
 ```
 
-### `fs h` (`fs guides`)
+### `fs h` (`fs guide`)
 
 Open corresponding guides' section in browser. If section is not found
 then searches through the guides.
 
 
 ```bash
-$ fs h style                     # open "Style Guide"
-$ fs h code review               # open "Code Review"
-$ fs h heroku                    # open "Deploy to Heroku"
-$ fs h new project               # open "Create new project from scratch"
-$ fs h I am no longer young      # search "I am no longer young" in the guides
+$ fs h style                     # opens "Style Guide"
+$ fs h code review               # opens "Code Review"
+$ fs h heroku                    # opens "Deploy to Heroku"
+$ fs h new project               # opens "Create new project from scratch"
+$ fs h I am no longer young      # searches "I am no longer young" in the guides
 ```
 
 See available sections in command autocompletion:

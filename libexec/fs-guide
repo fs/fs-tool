@@ -3,12 +3,15 @@
 # Summary: Open corresponding guides' section in browser
 # Help: Open corresponding guides' section in browser. If section is not found
 # then searches through the guides.
+#
 # Some useful examples:
-#    fs h style                     # open "Style Guide"
-#    fs h code review               # open "Code Review"
-#    fs h heroku                    # open "Deploy to Heroku"
-#    fs h new project               # open "Create new project from scratch"
-#    fs h I am no longer young      # search "I am no longer young" in the guides
+#
+#    fs h style                     # opens "Style Guide"
+#    fs h code review               # opens "Code Review"
+#    fs h heroku                    # opens "Deploy to Heroku"
+#    fs h new project               # opens "Create new project from scratch"
+#    fs h I am no longer young      # searches "I am no longer young" in the guides
+#
 
 require 'yaml'
 require 'uri'
