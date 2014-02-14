@@ -1,0 +1,39 @@
+#!/usr/bin/env ruby
+require 'yaml'
+require 'uri'
+
+class GuidesManager
+  attr_reader :data, :root_url
+
+  def initialize(path)
+    load_yaml(path)
+  end
+
+  def process(*args)
+    url = guides_url(args)
+
+    exec("open #{url}")
+  end
+
+  private
+
+  def guides_url(*args)
+    url = data[args.join('_')] || data[args.join(' ')]
+
+    if url.nil?
+      URI.escape([@root_url, 'search?', 'q=', args.join(' ')].join)
+    else
+      [@root_url, 'tree/master/', url].join
+    end
+  end
+
+  def load_yaml(path)
+    @data = YAML.load_file(path)
+    @root_url = @data['root_url']
+  end
+end
+
+guides_file = File.join(ENV['_FS_ROOT'], 'share', 'fs', 'guides.yml')
+
+guides_manager = GuidesManager.new(guides_file)
+guides_manager.process(ARGV)
