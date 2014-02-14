@@ -39,3 +39,13 @@ $ fs wisdom
 Great Work is a Matter of Pride
 ```
 
+### `fs gh`
+
+Open current github repo in browser
+
+```bash
+$ fs gh                          # opens current repo on github
+$ fs gh pulls (fs gh p)          # opens current repo's pull requests on github
+$ fs gh issues (fs gh i)         # opens current repo's issues on github
+$ fs gh search (fs gh s) <query> # search in current repo
+```
