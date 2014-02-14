@@ -101,12 +101,14 @@ article {
   border: 3px solid #fff;
   border-width: 0 0 3px 3px;
   -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
 }
 
 #main .learn-more a:hover {
   border-color: #cf1332;
   cursor: pointer;
   -webkit-transition: border-color, .4s;
+  transition: border-color, .4s;
 }
 
 
