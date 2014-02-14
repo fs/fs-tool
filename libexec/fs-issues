@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Usage: fs issues
-# Summary: Open Flatstack issues
-# Help: Open Flatstack issues
+# Summary: Open Flatstack issues on github
+# Help: Open Flatstack issues on github
 
 set -e
 

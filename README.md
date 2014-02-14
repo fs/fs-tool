@@ -81,7 +81,9 @@ communication     learn             openspace         rollbar
 ### Other commands
 
 ```bash
-$ fs issues                      # opens Flatstack issues
+$ fs news                        # opens Flatstack news feed on github
+$ fs teams (fs team)             # opens Flatstack teams management on github
+$ fs issues                      # opens Flatstack issues on github
 $ fs pulls (fs prs)              # opens public Flastack pull requests on github
 $ fs pulls private               # opens private Flatstack pull requests on github
 ```
