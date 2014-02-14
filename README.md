@@ -44,10 +44,14 @@ Great Work is a Matter of Pride
 Open current github repo in browser
 
 ```bash
-$ fs gh                          # opens current repo on github
-$ fs gh pulls (fs gh p)          # opens current repo's pull requests on github
-$ fs gh issues (fs gh i)         # opens current repo's issues on github
-$ fs gh search (fs gh s) <query> # search in current repo
+$ fs gh                           # opens current repo on github
+$ fs gh pulls (fs gh p)           # opens current repo's pull requests on github
+$ fs gh issues (fs gh i)          # opens current repo's issues on github
+$ fs gh pulls new (fs gh p n)     # opens new pull request in current repo on github
+$ fs gh issues new (fs gh i n)    # opens new issue in current repo on github
+$ fs gh pulls closed (fs gh p c)  # opens current repo's closed pull requests on github
+$ fs gh issues closed (fs gh i c) # opens current repo's closed issues on github
+$ fs gh search (fs gh s) <query>  # search in current repo
 ```
 
 ### `fs h` (`fs guide`)
