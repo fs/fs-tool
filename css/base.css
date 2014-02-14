@@ -1,7 +1,12 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
 body {
-  color: #212121;
+  color: #414141;
   background: #fff;
-  font: 20px/1.4 Helvetica Neue, Helvetica, Arial, sans-serif;
+  font: normal normal 20px/1.4 Helvetica Neue, Helvetica, Arial, sans-serif;
   -webkit-text-size-adjust: none
 }
 
@@ -17,12 +22,18 @@ h1, h2, h3, h4, p {
 
 h1 {
   padding: 1.5em 0;
-  font-size: 2em
+  font-size: 2em;
+  color: #a00000;
+}
+
+h1 code {
+  color: #a00000;
 }
 
 h2 {
   padding: 1.75em 0;
-  font-size: 1.5em
+  font-size: 1.5em;
+  color: #a00000;
 }
 
 h3 {
@@ -35,9 +46,9 @@ h4 {font-weight: bold}
 p, pre {margin: 0 0 1.5em}
 
 pre, code {
-  color: #007a00;
+  color: #0086b3;
   font-family: Monaco, Menlo, Consolas, Lucida Console, Bitstream Vera Sans Mono, Courier New, monospace;
-  font-size:88.8%
+  font-size: 88.8%
 }
 
 pre code {font-size: 1em}
