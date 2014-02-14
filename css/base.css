@@ -29,8 +29,9 @@ h1 {
 
 h1 code {
   color: #cf1332;
-  padding-right: 25px;
-  border-bottom: 3px solid;
+  padding: 6px 18px;
+  border: 4px solid;
+  font-weight: bold;
 }
 
 h2 {
@@ -75,6 +76,7 @@ article {
 #main .contents {
   height: 100%;
   background: rgba(0, 0, 0, .4);
+  position: relative;
 }
 
 #main .what-the-hell-am-i-doing {
@@ -87,6 +89,22 @@ article {
 #main p {
   font-size: 2em;
   color: #fff;
+}
+
+#main .learn-more a {
+  display: block;
+  margin: 0 auto;
+  height: 16px;
+  width: 16px;
+  border: 3px solid #fff;
+  border-width: 0 0 3px 3px;
+  -webkit-transform: rotate(-45deg);
+}
+
+#main .learn-more a:hover {
+  border-color: #cf1332;
+  cursor: pointer;
+  -webkit-transition: border-color, .4s;
 }
 
 
