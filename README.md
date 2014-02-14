@@ -58,7 +58,7 @@ $ fs gh search (fs gh s) <query>  # search in current repo
 
 Bootstrap new project from fs/xxx-base templates
 
-``bash`
+```bash
 $ fs setup rails <project name>  # setup new project using rails-base template
 $ fs setup api <project name>    # setup new project using rails-base-api template
 $ fs setup static <project name> # setup new project using static-base template
