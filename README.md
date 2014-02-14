@@ -53,7 +53,7 @@ $ fs gh search (fs gh s) <query> # search in current repo
 ### `fs h` (`fs guide`)
 
 Open corresponding guides' section in browser. If section is not found
-then searches through the guides.
+then search through the guides.
 
 
 ```bash

@@ -2,7 +2,7 @@
 # Usage: fs h [subcommand]
 # Summary: Open corresponding guides' section in browser
 # Help: Open corresponding guides' section in browser. If section is not found
-# then searches through the guides.
+# then search through the guides.
 #
 # Some useful examples:
 #
