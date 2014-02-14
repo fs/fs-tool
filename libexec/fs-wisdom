@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+# Usage: fs wisdom
+# Summary: Shares the best wisdom quotes and core values with you
+# Help: Shares the best wisdom quotes and core values with you
 
 set -e
 
