@@ -65,4 +65,10 @@ case $1 in
     bootstrap_rails_base_api $2;;
   "static" )
     bootstrap_static_base $2;;
+# Provide fs completions
+  "--complete" )
+  echo rails
+  echo api
+  echo static
+  ;;
 esac
