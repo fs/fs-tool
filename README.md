@@ -27,8 +27,8 @@ source ~/.zshenv
 
 ## Commands
 
-Run `fs` without any arguments or run `fs commands` to explore available commands.
-`fs help <command_name` prints usage and other command documentation.
+Run `fs` without any arguments or run `fs help` to explore available commands.
+`fs help <command_name>` prints usage and other command documentation.
 
 ### `fs wisdom` (`fs wise`)
 
