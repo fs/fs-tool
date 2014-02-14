@@ -49,3 +49,31 @@ $ fs gh pulls (fs gh p)          # opens current repo's pull requests on github
 $ fs gh issues (fs gh i)         # opens current repo's issues on github
 $ fs gh search (fs gh s) <query> # search in current repo
 ```
+
+### `fs h` (`fs guides`)
+
+Open corresponding guides' section in browser. If section is not found
+then searches through the guides.
+
+
+```bash
+$ fs h style                     # open "Style Guide"
+$ fs h code review               # open "Code Review"
+$ fs h heroku                    # open "Deploy to Heroku"
+$ fs h new project               # open "Create new project from scratch"
+$ fs h I am no longer young      # search "I am no longer young" in the guides
+```
+
+See available sections in command autocompletion:
+
+```bash
+$ fs h <TAB><TAB>
+aws               dns               logentries        openspace_rules   semaphore
+basecamp          github            maintain          pagerduty         style
+bug_report        google_apps       maintain_project  passpack          style_guide
+bug_reports       heroku            network           pingdom           workflow
+code_review       hipchat           new_project       printer
+communicate       infrastructure    open_space_rules  printers
+communication     learn             openspace         rollbar
+```
+
