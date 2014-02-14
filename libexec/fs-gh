@@ -53,5 +53,8 @@ case $1 in
 # FIXME: second level completion is broken - https://github.com/basecamp/sub/issues/7
 # Provide fs completions
   "--complete" )
-    echo pulls issues search;;
+    echo pulls
+    echo issues
+    echo search
+    ;;
 esac
