@@ -59,6 +59,8 @@ pre code {
   font-size: 1em;
 }
 
+pre code .fu {color: #cf1332}
+
 article {
   max-width: 800px;
   padding: 0 1em;
