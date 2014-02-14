@@ -1,4 +1,5 @@
-fs-tool
-=======
+fs
+==========================================================================
 
-One tool to rule them all
+A legendary command-line tool whose kung fu skills were the stuff of legend.
+
