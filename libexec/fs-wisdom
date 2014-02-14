@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Usage: fs wisdom
+# Summary: Shares the best wisdom quotes and our core values with you
+# Help: Shares the best wisdom quotes and our core values with you
+
+set -e
+
+wisdom_file="$_FS_ROOT/share/fs/wisdom"
+
+head -$((${RANDOM} % `wc -l < $wisdom_file` + 1)) $wisdom_file | tail -1
