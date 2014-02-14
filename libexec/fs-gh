@@ -3,24 +3,44 @@
 # Summary: Open current github repo in browser
 # Help: This can be used to open current repo on github. Available subcommands:
 #
-#    fs gh                          # opens current repo on github
-#    fs gh pulls (fs gh prs)        # opens current repo's pull requests on github
-#    fs gh issues (fs gh i)         # opens current repo's issues on github
-#    fs gh search (fs gh s) <query> # search in current repo
+#    fs gh                           # opens current repo on github
+#    fs gh pulls (fs gh p)           # opens current repo's pull requests on github
+#    fs gh issues (fs gh i)          # opens current repo's issues on github
+#    fs gh pulls new (fs gh p n)     # opens new pull request in current repo on github
+#    fs gh issues new (fs gh i n)    # opens new issue in current repo on github
+#    fs gh pulls closed (fs gh p c)  # opens current repo's closed pull requests on github
+#    fs gh issues closed (fs gh i c) # opens current repo's closed issues on github
+#    fs gh search (fs gh s) <query>  # searches in current repo
 
 github_repo=$(git remote -v | grep fetch | sed 's/.*github\.com[:/]\(.*\)\.git.*/\1/')
 
 case $1 in
   "" )
-  open "https://github.com/$github_repo"
-  ;;
+    open "https://github.com/$github_repo";;
   "pulls" | "p" )
-  open "https://github.com/$github_repo/pulls"
-  ;;
+    case $2 in
+      "" )
+        open "https://github.com/$github_repo/pulls";;
+      "new" | "n" )
+        branch_name=$(git rev-parse --abbrev-ref HEAD)
+        open "https://github.com/$github_repo/compare/$branch_name";;
+      "closed" | "c" )
+        open "https://github.com/$github_repo/pulls?state=closed";;
+    esac
+    ;;
   "issues" | "i" )
-  open "https://github.com/$github_repo/issues"
-  ;;
+    case $2 in
+      "" )
+        open "https://github.com/$github_repo/issues";;
+      "new" | "n" )
+        open "https://github.com/$github_repo/issues/new";;
+      "closed" | "c" )
+        open "https://github.com/$github_repo/issues?state=closed";;
+    esac
+    ;;
   "search" | "s" )
-  open "https://github.com/$github_repo/search?q=$2"
-  ;;
+    open "https://github.com/$github_repo/search?q=$2";;
+# Provide fs completions
+  "--complete" )
+    echo pulls issues search;;
 esac
