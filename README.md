@@ -54,6 +54,16 @@ $ fs gh issues closed (fs gh i c) # opens current repo's closed issues on github
 $ fs gh search (fs gh s) <query>  # search in current repo
 ```
 
+### `fs setup` (`fs bootstrap`)
+
+Bootstrap new project from fs/xxx-base templates
+
+``bash`
+$ fs setup rails <project name>  # setup new project using rails-base template
+$ fs setup api <project name>    # setup new project using rails-base-api template
+$ fs setup static <project name> # setup new project using static-base template
+```
+
 ### `fs h` (`fs guide`)
 
 Open corresponding guides' section in browser. If section is not found
