@@ -14,32 +14,36 @@
 
 github_repo=$(git remote -v | grep fetch | sed 's/.*github\.com[:/]\(.*\)\.git.*/\1/')
 
+function open_github {
+  open "https://github.com/$github_repo/$1"
+}
+
 case $1 in
   "" )
-    open "https://github.com/$github_repo";;
+    open_github;;
   "pulls" | "p" )
     case $2 in
       "" )
-        open "https://github.com/$github_repo/pulls";;
+        open_github "pulls?state=open";;
       "new" | "n" )
         branch_name=$(git rev-parse --abbrev-ref HEAD)
-        open "https://github.com/$github_repo/compare/$branch_name";;
+        open_github "compare/$branch_name";;
       "closed" | "c" )
-        open "https://github.com/$github_repo/pulls?state=closed";;
+        open_github "pulls?state=closed";;
     esac
     ;;
   "issues" | "i" )
     case $2 in
       "" )
-        open "https://github.com/$github_repo/issues";;
+        open_github "issues?state=open";;
       "new" | "n" )
-        open "https://github.com/$github_repo/issues/new";;
+        open_github "issues/new";;
       "closed" | "c" )
-        open "https://github.com/$github_repo/issues?state=closed";;
+        open_github "issues?state=closed";;
     esac
     ;;
   "search" | "s" )
-    open "https://github.com/$github_repo/search?q=$2";;
+    open_github "search?q=$2";;
 # Provide fs completions
   "--complete" )
     echo pulls issues search;;
