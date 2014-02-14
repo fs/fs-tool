@@ -3,22 +3,24 @@ require 'yaml'
 require 'uri'
 
 class GuidesManager
-  attr_reader :data, :root_url
+  attr_reader :root_url, :paths
 
   def initialize(path)
     load_yaml(path)
   end
 
   def process(*args)
-    url = guides_url(args)
+    exec("open #{guides_url(args)}")
+  end
 
-    exec("open #{url}")
+  def completions
+    @paths.keys.sort
   end
 
   private
 
   def guides_url(*args)
-    url = data[args.join('_')] || data[args.join(' ')]
+    url = @paths[args.join('_')] || @paths[args.join(' ')]
 
     if url.nil?
       URI.escape([@root_url, 'search?', 'q=', args.join(' ')].join)
@@ -28,12 +30,19 @@ class GuidesManager
   end
 
   def load_yaml(path)
-    @data = YAML.load_file(path)
-    @root_url = @data['root_url']
+    data = YAML.load_file(path)
+    @paths = data['paths']
+    @root_url = data['root_url']
   end
 end
 
 guides_file = File.join(ENV['_FS_ROOT'], 'share', 'fs', 'guides.yml')
 
 guides_manager = GuidesManager.new(guides_file)
-guides_manager.process(ARGV)
+
+# Provide fs completions
+if ARGV[0] == '--complete'
+  puts guides_manager.completions
+else
+  guides_manager.process(ARGV)
+end
