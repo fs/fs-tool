@@ -1,0 +1,64 @@
+#!/usr/bin/env ruby
+# Usage: fs h [subcommand]
+# Summary: Open corresponding guides' section in browser
+# Help: Open corresponding guides' section in browser. If section is not found
+# then search through the guides.
+#
+# Some useful examples:
+#
+#    fs h style                     # opens "Style Guide"
+#    fs h code review               # opens "Code Review"
+#    fs h heroku                    # opens "Deploy to Heroku"
+#    fs h new project               # opens "Create new project from scratch"
+#    fs h I am no longer young      # searches "I am no longer young" in the guides
+#
+
+require 'yaml'
+require 'uri'
+
+class GuidesManager
+  attr_reader :root_url, :paths
+
+  def initialize(path)
+    load_yaml(path)
+  end
+
+  def process(*args)
+    exec("open #{guides_url(args)}")
+  end
+
+  def completions
+    @paths.keys.sort
+  end
+
+  private
+
+  def guides_url(*args)
+    url = @paths[args.join('_')] || @paths[args.join(' ')]
+
+    if url.nil?
+      URI.escape([@root_url, 'search?', 'q=', args.join(' ')].join)
+    else
+      [@root_url, 'tree/master/', url].join
+    end
+  end
+
+  def load_yaml(path)
+    data = YAML.load_file(path)
+    @paths = data['paths']
+    @root_url = data['root_url']
+  end
+end
+
+guides_file = File.join(ENV['_FS_ROOT'], 'share', 'fs', 'guides.yml')
+
+guides_manager = GuidesManager.new(guides_file)
+
+# Provide fs completions
+if ARGV[0] == '--complete'
+  puts guides_manager.completions
+elsif ARGV.length > 0
+  guides_manager.process(ARGV)
+else
+  exec "fs help guide"
+end
