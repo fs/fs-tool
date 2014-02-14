@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+set -e
+
+wisdom_file="$_FS_ROOT/share/fs/wisdom"
+
+head -$((${RANDOM} % `wc -l < $wisdom_file` + 1)) $wisdom_file | tail -1
