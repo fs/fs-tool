@@ -18,31 +18,36 @@ function open_github {
   open "https://github.com/$github_repo/$1"
 }
 
-# TODO: refactor nested cases
+function process_pulls {
+  case $1 in
+    "" )
+      open_github "pulls?state=open";;
+    "new" | "n" )
+      branch_name=$(git rev-parse --abbrev-ref HEAD)
+      open_github "compare/$branch_name";;
+    "closed" | "c" )
+      open_github "pulls?state=closed";;
+  esac
+}
+
+function process_issues {
+  case $1 in
+    "" )
+      open_github "issues?state=open";;
+    "new" | "n" )
+      open_github "issues/new";;
+    "closed" | "c" )
+      open_github "issues?state=closed";;
+  esac
+}
+
 case $1 in
   "" )
     open_github;;
   "pulls" | "p" )
-    case $2 in
-      "" )
-        open_github "pulls?state=open";;
-      "new" | "n" )
-        branch_name=$(git rev-parse --abbrev-ref HEAD)
-        open_github "compare/$branch_name";;
-      "closed" | "c" )
-        open_github "pulls?state=closed";;
-    esac
-    ;;
+    process_pulls $2;;
   "issues" | "i" )
-    case $2 in
-      "" )
-        open_github "issues?state=open";;
-      "new" | "n" )
-        open_github "issues/new";;
-      "closed" | "c" )
-        open_github "issues?state=closed";;
-    esac
-    ;;
+    process_issues $2;;
   "search" | "s" )
     open_github "search?q=$2";;
 # FIXME: second level completion is broken - https://github.com/basecamp/sub/issues/7
