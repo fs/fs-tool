@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# Usage: fs gh [subcommand] 
+# Summary: Open current github repo in browser
+# Help: This can be used to open current repo on github. Available subcommands:
+#    fs gh                          # opens current repo on github
+#    fs gh pulls (fs gh prs)        # opens current repo's pull requests on github
+#    fs gh issues (fs gh i)         # opens current repo's issues on github
+#    fs gh search (fs gh s) <query> # search in current repo
+
+github_repo=$(git remote -v | grep fetch | sed 's/.*github\.com[:/]\(.*\)\.git.*/\1/')
+
+case $1 in
+  "" )
+  open "https://github.com/$github_repo"
+  ;;
+  "pulls" | "p" )
+  open "https://github.com/$github_repo/pulls"
+  ;;
+  "issues" | "i" )
+  open "https://github.com/$github_repo/issues"
+  ;;
+  "search" | "s" )
+  open "https://github.com/$github_repo/search?q=$2"
+  ;;
+esac
