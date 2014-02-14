@@ -1,6 +1,7 @@
 html, body {
   margin: 0;
   padding: 0;
+  height: 100%;
 }
 
 body {
@@ -21,23 +22,24 @@ h1, h2, h3, h4, p {
 }
 
 h1 {
-  padding: 1.5em 0;
+  padding: 1.5em 0 1em;
   font-size: 2em;
-  color: #a00000;
+  color: #cf1332;
 }
 
 h1 code {
-  color: #a00000;
+  color: #cf1332;
+  padding-right: 25px;
+  border-bottom: 3px solid;
 }
 
 h2 {
-  padding: 1.75em 0;
+  padding: 1.75em 0 .5em;
   font-size: 1.5em;
-  color: #a00000;
 }
 
 h3 {
-  padding: 1.82em 0;
+  padding: 1.82em 0 .5em;
   font-size: 1.16em
 }
 
@@ -46,9 +48,52 @@ h4 {font-weight: bold}
 p, pre {margin: 0 0 1.5em}
 
 pre, code {
-  color: #0086b3;
+  color: #cf1332;
   font-family: Monaco, Menlo, Consolas, Lucida Console, Bitstream Vera Sans Mono, Courier New, monospace;
   font-size: 88.8%
 }
 
-pre code {font-size: 1em}
+pre code {
+  color: #0086b3;
+  font-size: 1em;
+}
+
+article {
+  max-width: 800px;
+  padding: 0 1em;
+  margin: 0 auto;
+}
+
+#main {
+  padding: 0;
+  height: 100%;
+  max-width: none;
+  background: #212121 url(../i/bg.jpg) center center no-repeat;
+  background-size: cover;
+}
+
+#main .contents {
+  height: 100%;
+  background: rgba(0, 0, 0, .4);
+}
+
+#main .what-the-hell-am-i-doing {
+  padding-top: 10%;
+  max-width: 800px;
+  margin: 0 auto;
+
+}
+
+#main p {
+  font-size: 2em;
+  color: #fff;
+}
+
+
+#footer {
+  max-width: 800px;
+  margin: 4em auto 0;
+  padding: 2em 0 3em;
+  font-size: 75%;
+  text-align: center;
+}
