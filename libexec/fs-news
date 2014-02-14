@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Usage: fs news
+# Summary: Open Flatstack news feed on github
+# Help: Open Flatstack news feed on github
+
+set -e
+
+open "https://github.com/orgs/fs/dashboard"

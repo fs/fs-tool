@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Usage: fs teams
+# Summary: Open Flatstack teams management on github
+# Help: Open Flatstack teams management on github
+
+set -e
+
+open "https://github.com/orgs/fs/teams"
