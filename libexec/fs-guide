@@ -57,6 +57,8 @@ guides_manager = GuidesManager.new(guides_file)
 # Provide fs completions
 if ARGV[0] == '--complete'
   puts guides_manager.completions
-else
+elsif ARGV.length > 0
   guides_manager.process(ARGV)
+else
+  exec "fs help guide"
 end
