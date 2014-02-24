@@ -1,0 +1,27 @@
+#!/usr/bin/env ruby
+# Usage: fs ssh [<application>] [<environment>]
+# Summary: Open SSH session to a given application (environment).
+# Help: Open SSH session to a given application (environment).
+# Uses per-project or per-user configuration stored in `.fs.yml`, for example:
+#
+## ~/.fs.yml
+# servers:
+#   library:
+#     default: user@library.foo.com
+#     staging: user@library-staging.foo.com
+#
+# Running `fs ssh library` will open SSH session `user@library.foo.com`,
+# `fs ssh library staging` will open SSH session `user@library-staging.foo.com`.
+#
+#
+# Per-project configuration:
+#
+## .fs.yml
+# servers:
+#  default: user@library.foo.com
+#  staging: user@library-staging.foo.com
+#
+# So running `fs ssh staging` in `library` folder
+# will open SSH session `user@library-staging.foo.com`.
+
+
