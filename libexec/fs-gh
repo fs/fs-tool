@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -e
 # Usage: fs gh [subcommand]
 # Summary: Open current github repo in browser
 # Help: This can be used to open current repo on github. Available subcommands:
@@ -12,7 +13,8 @@
 #    fs gh issues closed (fs gh i c) # opens current repo's closed issues on github
 #    fs gh search (fs gh s) <query>  # searches in current repo
 
-github_repo=$(git remote -v | grep fetch | sed 's/.*github\.com[:/]\(.*\)\.git.*/\1/')
+remote_url=$(git config --get remote.origin.url)
+github_repo=$(echo $remote_url | sed 's/.*github\.com[:/]\(.*\)\.git.*/\1/')
 
 function open_github {
   open "https://github.com/$github_repo/$1"
