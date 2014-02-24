@@ -52,6 +52,7 @@ $ fs gh issues new (fs gh i n)    # opens new issue in current repo on github
 $ fs gh pulls closed (fs gh p c)  # opens current repo's closed pull requests on github
 $ fs gh issues closed (fs gh i c) # opens current repo's closed issues on github
 $ fs gh search (fs gh s) <query>  # search in current repo
+$ fs gh show <commit_id>          # opens commit <commit_id> on github
 ```
 
 ### `fs setup` (`fs bootstrap`)
