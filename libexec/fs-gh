@@ -12,6 +12,7 @@ set -e
 #    fs gh pulls closed (fs gh p c)  # opens current repo's closed pull requests on github
 #    fs gh issues closed (fs gh i c) # opens current repo's closed issues on github
 #    fs gh search (fs gh s) <query>  # searches in current repo
+#    fs gh show <commit_id>          # opens commit <commit_id> on github
 
 remote_url=$(git config --get remote.origin.url)
 github_repo=$(echo $remote_url | sed 's/.*github\.com[:/]\(.*\)\.git.*/\1/')
@@ -52,11 +53,14 @@ case $1 in
     process_issues $2;;
   "search" | "s" )
     open_github "search?q=$2";;
+  "show" )
+    open_github "commit/$2";;
 # FIXME: second level completion is broken - https://github.com/basecamp/sub/issues/7
 # Provide fs completions
   "--complete" )
     echo pulls
     echo issues
     echo search
+    echo show
     ;;
 esac
