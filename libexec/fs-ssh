@@ -45,7 +45,7 @@ class ServersManager
     if server
       open_session(server)
     else
-      $stderr.puts("unknown server")
+      $stderr.puts('unknown server')
     end
   end
 
@@ -54,12 +54,12 @@ class ServersManager
   def load_servers_list
     servers = {}
 
-    if File.exists?(project_configuration_file)
-      servers.merge!(YAML.load_file(project_configuration_file)['servers'])
-    end
-
     if File.exists?(global_configuration_file)
       servers.merge!(YAML.load_file(global_configuration_file)['servers'])
+    end
+
+    if File.exists?(project_configuration_file)
+      servers.merge!(YAML.load_file(project_configuration_file)['servers'])
     end
 
     servers
