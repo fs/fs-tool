@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 # Usage: fs ssh [<application>] [<environment>]
-# Summary: Open SSH session to a given application (environment).
+# Summary: Open SSH session to a given application (environment)
 # Help: Open SSH session to a given application (environment).
 # Uses per-project or per-user configuration stored in `.fs.yml`, for example:
 #
