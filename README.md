@@ -55,6 +55,36 @@ $ fs gh search (fs gh s) <query>  # search in current repo
 $ fs gh show <commit_id>          # opens commit <commit_id> on github
 ```
 
+### `fs ssh`
+
+Open SSH session to a given application (environment).
+
+Uses per-project or per-user configuration stored in `.fs.yml`, for example:
+
+```yaml
+# ~/.fs.yml
+servers:
+  library:
+    default: user@library.foo.com
+    staging: user@library-staging.foo.com
+```
+
+Running `fs ssh library` will open SSH session `user@library.foo.com`,
+`fs ssh library staging` will open SSH session `user@library-staging.foo.com`.
+
+Per-project configuration:
+
+```yaml
+# .fs.yml
+servers:
+ default: user@library.foo.com
+ staging: user@library-staging.foo.com
+```
+
+So running `fs ssh staging` in `library` folder
+will open SSH session `user@library-staging.foo.com`.
+
+
 ### `fs setup` (`fs bootstrap`)
 
 Bootstrap new project from fs/xxx-base templates
