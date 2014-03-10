@@ -3,6 +3,7 @@ fs
 
 A legendary command-line tool whose kung fu skills were the stuff of legend.
 
+[![Build Status](https://travis-ci.org/fs/fs-tool.png?branch=master)](https://travis-ci.org/fs/fs-tool)
 
 ## Installation
 
@@ -51,39 +52,9 @@ $ fs gh pulls new (fs gh p n)     # opens new pull request in current repo on gi
 $ fs gh issues new (fs gh i n)    # opens new issue in current repo on github
 $ fs gh pulls closed (fs gh p c)  # opens current repo's closed pull requests on github
 $ fs gh issues closed (fs gh i c) # opens current repo's closed issues on github
-$ fs gh search (fs gh s) <query>  # search in current repo
+$ fs gh search (fs gh s) <query>  # searches in current repo
 $ fs gh show <commit_id>          # opens commit <commit_id> on github
 ```
-
-### `fs ssh`
-
-Open SSH session to a given application (environment).
-
-Uses per-project or per-user configuration stored in `.fs.yml`, for example:
-
-```yaml
-# ~/.fs.yml
-servers:
-  library:
-    default: user@library.foo.com
-    staging: user@library-staging.foo.com
-```
-
-Running `fs ssh library` will open SSH session `user@library.foo.com`,
-`fs ssh library staging` will open SSH session `user@library-staging.foo.com`.
-
-Per-project configuration:
-
-```yaml
-# .fs.yml
-servers:
- default: user@library.foo.com
- staging: user@library-staging.foo.com
-```
-
-So running `fs ssh staging` in `library` folder
-will open SSH session `user@library-staging.foo.com`.
-
 
 ### `fs setup` (`fs bootstrap`)
 
@@ -122,6 +93,50 @@ communicate       infrastructure    open_space_rules  printers
 communication     learn             openspace         rollbar
 ```
 
+### Remote commands
+
+Remote commands use per-user or per-project server configuration
+stored in `.fs.yml`, for example:
+
+```yaml
+# .fs.yml
+servers:
+ default: &default
+   address: me@startup.com
+   environment: staging
+   root: /data/application
+ staging:
+   <<: *default
+ staging_2:
+   <<: *default
+   address: me@startup-s2.com
+```
+
+Global configuration:
+
+```yaml
+# ~/.fs.yml
+servers:
+  home:
+    address: foo@stark.geocities.com
+    environment: staging
+    root: /var/www/stark
+  'home production':
+    address: foo@wayne.geocities.com
+    root: /var/www/wayne
+    environment: production
+```
+
+#### `fs ssh`
+
+Open SSH session to a given application (environment).
+
+```bash
+$ fs ssh                 # opens SSH session to me@startup.com
+$ fs ssh staging_2       # opens SSH session to me@startup-s2.com
+$ fs ssh home            # opens SSH session foo@stark.geocities.com
+$ fs ssh home production # opens SSH session foo@wayne.geocities.com
+```
 
 ### Other commands
 
