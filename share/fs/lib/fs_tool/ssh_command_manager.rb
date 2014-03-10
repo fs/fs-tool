@@ -7,7 +7,7 @@ class FsTool::SshCommandManager
     if server = @server_list.find(*args)
       run_on(server, @command)
     else
-      $stderr.puts('unknown application or environment')
+      raise FsTool::ServerNotFoundException
     end
   end
 
@@ -24,4 +24,7 @@ class FsTool::SshCommandManager
       exec "ssh #{server.address} -t '#{command % server.params}'"
     end
   end
+end
+
+class FsTool::ServerNotFoundException < StandardError
 end

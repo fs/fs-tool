@@ -8,11 +8,9 @@ describe FsTool::SshCommandManager do
 
     before { FsTool::ServerList.stub(new: server_list) }
 
-    context 'when server is not found' do
-      it 'prints error message' do
-        $stderr.should_receive(:puts).with('unknown application or environment')
-
-        command_manager.process('foo')
+    context 'when server is NOT found' do
+      it 'raises error' do
+        expect { command_manager.process('foo') }.to raise_error(FsTool::ServerNotFoundException)
       end
     end
 

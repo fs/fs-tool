@@ -12,5 +12,9 @@ ssh_manager = FsTool::SshCommandManager.new
 if ARGV[0] == '--complete'
   puts ssh_manager.completions
 else
-  ssh_manager.process(*ARGV)
+  begin
+    ssh_manager.process(*ARGV)
+  rescue FsTool::ServerNotFoundException
+    $stderr.puts('unknown application or environment')
+  end
 end
