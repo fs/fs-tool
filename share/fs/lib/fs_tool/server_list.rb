@@ -7,6 +7,14 @@ class FsTool::ServerList
     @servers = load_servers
   end
 
+  def find(key)
+    @servers[key]
+  end
+
+  def names
+    @servers.keys
+  end
+
   private
 
   def load_servers
@@ -24,7 +32,7 @@ class FsTool::ServerList
   end
 
   def convert_hashes_to_objects(servers)
-    servers.map do |name, values|
+    servers.each do |name, values|
       servers[name] = FsTool::Server.new(values.merge(name: name))
     end
   end
