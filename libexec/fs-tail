@@ -12,5 +12,9 @@ ssh_manager = FsTool::SshCommandManager.new("cd %{root}; tail -f log/%{environme
 if ARGV[0] == '--complete'
   puts ssh_manager.completions
 else
-  ssh_manager.process(*ARGV)
+  begin
+    ssh_manager.process(*ARGV)
+  rescue FsTool::ServerNotFoundException
+    exec('tail -f log/*.log')
+  end
 end

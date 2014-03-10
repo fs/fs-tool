@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # Usage: fs console [<application>] [<environment>]
-# Summary: Run remote Rails console attached to a given application (environment)
-# Help: Run remote Rails console attached to a given application (environment).
+# Summary: Run remote or local Rails console
+# Help: Run remote or local Rails console
 # Uses per-project or per-user configuration stored in `.fs.yml`, see README.md for examples.
 
 require File.join(ENV['_FS_ROOT'], 'share', 'fs', 'lib', 'fs_tool')
@@ -12,5 +12,9 @@ ssh_manager = FsTool::SshCommandManager.new("cd %{root}; RAILS_ENV=%{environment
 if ARGV[0] == '--complete'
   puts ssh_manager.completions
 else
-  ssh_manager.process(*ARGV)
+  begin
+    ssh_manager.process(*ARGV)
+  rescue FsTool::ServerNotFoundException
+    exec('bundle exec rails c')
+  end
 end

@@ -101,14 +101,14 @@ stored in `.fs.yml`, for example:
 ```yaml
 # .fs.yml
 servers:
- default: &default
+ defaults: &defaults
    address: me@startup.com
    environment: staging
    root: /data/application
  staging:
-   <<: *default
+   <<: *defaults
  staging_2:
-   <<: *default
+   <<: *defaults
    address: me@startup-s2.com
 ```
 
@@ -132,7 +132,7 @@ servers:
 Open SSH session to a given application (environment).
 
 ```bash
-$ fs ssh                 # opens SSH session to me@startup.com
+$ fs ssh staging         # opens SSH session to me@startup.com
 $ fs ssh staging_2       # opens SSH session to me@startup-s2.com
 $ fs ssh home            # opens SSH session foo@stark.geocities.com
 $ fs ssh home production # opens SSH session foo@wayne.geocities.com
@@ -143,21 +143,33 @@ $ fs ssh home production # opens SSH session foo@wayne.geocities.com
 Run remote Rails console attached to a given application (environment).
 
 ```bash
-$ fs c                 # opens SSH session to me@startup.com and runs `rails c` in app root
+$ fs c staging         # opens SSH session to me@startup.com and runs `rails c` in app root
 $ fs c staging_2       # opens SSH session to me@startup-s2.com and runs `rails c` in app root
 $ fs c home            # opens SSH session foo@stark.geocities.com and runs `rails c` in app root
 $ fs c home production # opens SSH session foo@wayne.geocities.com and runs `rails c` in app root
 ```
 
-#### `fs tail` (`fs t`)
+Also works for local Rails apps (which doesn't have `default` section in `servers`):
+
+```bash
+$ fs c                 # runs `bundle exec rails c` in the current directory
+```
+
+#### `fs tail`
 
 Display the recent application logs in realtime.
 
 ```bash
-$ fs t                 # opens SSH session to me@startup.com and runs `tail -f` against app log
-$ fs t staging_2       # opens SSH session to me@startup-s2.com and runs `tail -f` against app log
-$ fs t home            # opens SSH session foo@stark.geocities.com and runs `tail -f` against app log
-$ fs t home production # opens SSH session foo@wayne.geocities.com and runs `tail -f` against app log
+$ fs tail staging         # opens SSH session to me@startup.com and tails application log
+$ fs tail staging_2       # opens SSH session to me@startup-s2.com and tails application log
+$ fs tail home            # opens SSH session foo@stark.geocities.com and tails application log
+$ fs tail home production # opens SSH session foo@wayne.geocities.com and tails application log
+```
+
+Also useful for local Rails apps (which doesn't have `default` section in `servers`):
+
+```bash
+$ fs tail                 # runs `tail -f log/*.log` in the current directory
 ```
 
 ### Other commands
