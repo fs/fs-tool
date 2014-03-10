@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+# Usage: fs tail [<application>] [<environment>]
+# Summary: Display the recent application logs in realtime
+# Help: Display the recent application logs in realtime.
+# Uses per-project or per-user configuration stored in `.fs.yml`, see README.md for examples.
+
+require File.join(ENV['_FS_ROOT'], 'share', 'fs', 'lib', 'fs_tool')
+
+ssh_manager = FsTool::SshCommandManager.new("cd %{root}; tail -f log/%{environment}.log")
+
+# Provide fs completions
+if ARGV[0] == '--complete'
+  puts ssh_manager.completions
+else
+  ssh_manager.process(*ARGV)
+end

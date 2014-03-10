@@ -149,6 +149,17 @@ $ fs c home            # opens SSH session foo@stark.geocities.com and runs `rai
 $ fs c home production # opens SSH session foo@wayne.geocities.com and runs `rails c` in app root
 ```
 
+#### `fs tail` (`fs t`)
+
+Display the recent application logs in realtime.
+
+```bash
+$ fs t                 # opens SSH session to me@startup.com and runs `tail -f` against app log
+$ fs t staging_2       # opens SSH session to me@startup-s2.com and runs `tail -f` against app log
+$ fs t home            # opens SSH session foo@stark.geocities.com and runs `tail -f` against app log
+$ fs t home production # opens SSH session foo@wayne.geocities.com and runs `tail -f` against app log
+```
+
 ### Other commands
 
 ```bash
