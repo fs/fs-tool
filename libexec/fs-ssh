@@ -2,30 +2,7 @@
 # Usage: fs ssh [<application>] [<environment>]
 # Summary: Open SSH session to a given application (environment)
 # Help: Open SSH session to a given application (environment).
-# Uses per-project or per-user configuration stored in `.fs.yml`, for example:
-#
-## ~/.fs.yml
-# servers:
-#   library:
-#     address: user@library.foo.com
-#   'library staging':
-#      address: user@library-staging.foo.com
-#
-# Running `fs ssh library` will open SSH session `user@library.foo.com`,
-# `fs ssh library staging` will open SSH session `user@library-staging.foo.com`.
-#
-#
-# Per-project configuration:
-#
-## .fs.yml
-# servers:
-#  default:
-#    address: user@library.foo.com
-#  staging:
-#    address: user@library-staging.foo.com
-#
-# So running `fs ssh staging` in `library` folder
-# will open SSH session `user@library-staging.foo.com`.
+# Uses per-project or per-user configuration stored in `.fs.yml`, see README.md for examples.
 
 require File.join(ENV['_FS_ROOT'], 'share', 'fs', 'lib', 'fs_tool')
 

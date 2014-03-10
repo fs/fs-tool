@@ -3,10 +3,9 @@ servers:
   default: &default
     address: foo@bar.com
     environment: staging
-    root: '/data/application'
+    root: /data/application
   staging:
     <<: *default
   staging_2:
     <<: *default
     address: foo@bar2.com
-

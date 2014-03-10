@@ -5,5 +5,5 @@ servers:
     environment: staging
     root: /var/www/home
   'home production':
-      address: baz@boo.com
-      root: /var/www
+    address: baz@boo.com
+    root: /var/www
