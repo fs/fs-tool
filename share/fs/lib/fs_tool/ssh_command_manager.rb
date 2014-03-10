@@ -4,7 +4,7 @@ class FsTool::SshCommandManager
   end
 
   def process(*args)
-    if server = @server_list.find(args.join(' '))
+    if server = @server_list.find(*args)
       run_on(server, @command)
     else
       $stderr.puts('unknown application or environment')
@@ -12,7 +12,7 @@ class FsTool::SshCommandManager
   end
 
   def completions
-    @server_list.completions
+    @server_list.names
   end
 
   private

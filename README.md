@@ -65,8 +65,9 @@ Uses per-project or per-user configuration stored in `.fs.yml`, for example:
 # ~/.fs.yml
 servers:
   library:
-    default: user@library.foo.com
-    staging: user@library-staging.foo.com
+    address: user@library.foo.com
+  'library staging':
+    address: user@library-staging.foo.com
 ```
 
 Running `fs ssh library` will open SSH session `user@library.foo.com`,
@@ -77,8 +78,10 @@ Per-project configuration:
 ```yaml
 # .fs.yml
 servers:
- default: user@library.foo.com
- staging: user@library-staging.foo.com
+ default:
+   address: user@library.foo.com
+ staging:
+   address: user@library-staging.foo.com
 ```
 
 So running `fs ssh staging` in `library` folder
