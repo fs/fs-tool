@@ -138,6 +138,17 @@ $ fs ssh home            # opens SSH session foo@stark.geocities.com
 $ fs ssh home production # opens SSH session foo@wayne.geocities.com
 ```
 
+#### `fs console` (`fs c`)
+
+Run remote Rails console attached to a given application (environment).
+
+```bash
+$ fs c                 # opens SSH session to me@startup.com and runs `rails c` in app root
+$ fs c staging_2       # opens SSH session to me@startup-s2.com and runs `rails c` in app root
+$ fs c home            # opens SSH session foo@stark.geocities.com and runs `rails c` in app root
+$ fs c home production # opens SSH session foo@wayne.geocities.com and runs `rails c` in app root
+```
+
 ### Other commands
 
 ```bash

@@ -14,4 +14,3 @@ if ARGV[0] == '--complete'
 else
   ssh_manager.process(*ARGV)
 end
-
