@@ -16,7 +16,7 @@ describe FsTool::ServerList do
     Dir.stub(pwd: File.join(new_home, 'project'))
   end
 
-  describe '#initialize' do
+  describe '.initialize' do
     subject { described_class.new.servers }
 
     it { should have(5).items }

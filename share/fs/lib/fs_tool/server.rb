@@ -6,4 +6,12 @@ class FsTool::Server
       instance_variable_set("@#{key}", value)
     end
   end
+
+  def params
+    {
+      name: name,
+      environment: environment,
+      root: root
+    }
+  end
 end
