@@ -2,5 +2,8 @@
 servers:
   home:
     address: bar@baz.com
-    environment: production
+    environment: staging
     root: /var/www/home
+  'home production':
+      address: baz@boo.com
+      root: /var/www

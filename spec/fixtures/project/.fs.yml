@@ -1,10 +1,12 @@
 # project configuration file
 servers:
-  staging: &staging
+  default: &default
     address: foo@bar.com
     environment: staging
     root: '/data/application'
+  staging:
+    <<: *default
   staging_2:
-    <<: *staging
+    <<: *default
     address: foo@bar2.com
 

@@ -7,12 +7,16 @@ class FsTool::ServerList
     @servers = load_servers
   end
 
-  def find(key)
-    @servers[key]
+  def find(*args)
+    if args.length == 0
+      @servers['default']
+    else
+      @servers[args.join(' ')]
+    end
   end
 
   def names
-    @servers.keys
+    @servers.keys - ['default']
   end
 
   private
