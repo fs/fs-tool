@@ -1,0 +1,6 @@
+# global configuration file
+servers:
+  home:
+    address: bar@baz.com
+    environment: production
+    root: /var/www/home

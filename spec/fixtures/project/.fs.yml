@@ -1,0 +1,10 @@
+# project configuration file
+servers:
+  staging: &staging
+    address: foo@bar.com
+    environment: staging
+    root: '/data/application'
+  staging_2:
+    <<: *staging
+    address: foo@bar2.com
+

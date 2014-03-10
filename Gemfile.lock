@@ -18,3 +18,4 @@ PLATFORMS
 DEPENDENCIES
   rake
   rspec
+  rspec-mocks
