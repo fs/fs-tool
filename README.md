@@ -127,17 +127,6 @@ servers:
     environment: production
 ```
 
-#### `fs ssh`
-
-Open SSH session to a given application (environment).
-
-```bash
-$ fs ssh staging         # opens SSH session to me@startup.com
-$ fs ssh staging_2       # opens SSH session to me@startup-s2.com
-$ fs ssh home            # opens SSH session foo@stark.geocities.com
-$ fs ssh home production # opens SSH session foo@wayne.geocities.com
-```
-
 #### `fs console` (`fs c`)
 
 Run remote Rails console attached to a given application (environment).
@@ -170,6 +159,17 @@ Also useful for local Rails apps (which doesn't have `default` section in `serve
 
 ```bash
 $ fs tail                 # runs `tail -f log/*.log` in the current directory
+```
+
+#### `fs ssh`
+
+Open SSH session to a given application (environment).
+
+```bash
+$ fs ssh staging         # opens SSH session to me@startup.com
+$ fs ssh staging_2       # opens SSH session to me@startup-s2.com
+$ fs ssh home            # opens SSH session foo@stark.geocities.com
+$ fs ssh home production # opens SSH session foo@wayne.geocities.com
 ```
 
 ### Other commands
