@@ -3,6 +3,10 @@
 # Summary: Display the recent application logs in realtime
 # Help: Display the recent application logs in realtime.
 # Uses per-project or per-user configuration stored in `.fs.yml`, see README.md for examples.
+# Examples:
+#
+# fs tail staging # display remote application logs
+# fs tail         # display local application logs
 
 require File.join(ENV['_FS_ROOT'], 'share/fs/lib/fs_tool')
 
