@@ -138,7 +138,7 @@ $ fs c home            # opens SSH session foo@stark.geocities.com and runs `rai
 $ fs c home production # opens SSH session foo@wayne.geocities.com and runs `rails c` in app root
 ```
 
-Also works for local Rails apps (which doesn't have `default` section in `servers`):
+Also works for local Rails apps (which don't have `default` section in `servers`):
 
 ```bash
 $ fs c                 # runs `bundle exec rails c` in the current directory
@@ -155,7 +155,7 @@ $ fs tail home            # opens SSH session foo@stark.geocities.com and tails 
 $ fs tail home production # opens SSH session foo@wayne.geocities.com and tails application log
 ```
 
-Also useful for local Rails apps (which doesn't have `default` section in `servers`):
+Also useful for local Rails apps (which don't have `default` section in `servers`):
 
 ```bash
 $ fs tail                 # runs `tail -f log/*.log` in the current directory
