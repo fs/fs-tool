@@ -26,5 +26,4 @@ class FsTool::SshCommandManager
   end
 end
 
-class FsTool::ServerNotFoundException < StandardError
-end
+class FsTool::ServerNotFoundException < StandardError; end

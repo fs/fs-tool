@@ -4,7 +4,7 @@
 # Help: Display the recent application logs in realtime.
 # Uses per-project or per-user configuration stored in `.fs.yml`, see README.md for examples.
 
-require File.join(ENV['_FS_ROOT'], 'share', 'fs', 'lib', 'fs_tool')
+require File.join(ENV['_FS_ROOT'], 'share/fs/lib/fs_tool')
 
 ssh_manager = FsTool::SshCommandManager.new("cd %{root}; tail -f log/%{environment}.log")
 
