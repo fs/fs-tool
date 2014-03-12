@@ -1,0 +1,24 @@
+#!/usr/bin/env ruby
+# Usage: fs console [<application>] [<environment>]
+# Summary: Run remote or local Rails console
+# Help: Run remote or local Rails console
+# Uses per-project or per-user configuration stored in `.fs.yml`, see README.md for examples.
+# Examples:
+#
+# fs console staging # run remote Rails console
+# fs console         # run local Rails console
+
+require File.join(ENV['_FS_ROOT'], 'share/fs/lib/fs_tool')
+
+ssh_manager = FsTool::SshCommandManager.new("cd %{root}; RAILS_ENV=%{environment} bundle exec rails c")
+
+# Provide fs completions
+if ARGV[0] == '--complete'
+  puts ssh_manager.completions
+else
+  begin
+    ssh_manager.process(*ARGV)
+  rescue FsTool::ServerNotFoundException
+    exec('bundle exec rails c')
+  end
+end

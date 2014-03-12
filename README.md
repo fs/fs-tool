@@ -101,14 +101,14 @@ stored in `.fs.yml`, for example:
 ```yaml
 # .fs.yml
 servers:
- default: &default
+ defaults: &defaults
    address: me@startup.com
    environment: staging
    root: /data/application
  staging:
-   <<: *default
+   <<: *defaults
  staging_2:
-   <<: *default
+   <<: *defaults
    address: me@startup-s2.com
 ```
 
@@ -127,12 +127,46 @@ servers:
     environment: production
 ```
 
+#### `fs console` (`fs c`)
+
+Run remote Rails console attached to a given application (environment).
+
+```bash
+$ fs c staging         # opens SSH session to me@startup.com and runs `rails c` in app root
+$ fs c staging_2       # opens SSH session to me@startup-s2.com and runs `rails c` in app root
+$ fs c home            # opens SSH session foo@stark.geocities.com and runs `rails c` in app root
+$ fs c home production # opens SSH session foo@wayne.geocities.com and runs `rails c` in app root
+```
+
+Also works for local Rails apps (which don't have `default` section in `servers`):
+
+```bash
+$ fs c                 # runs `bundle exec rails c` in the current directory
+```
+
+#### `fs tail`
+
+Display the recent application logs in realtime.
+
+```bash
+$ fs tail staging         # opens SSH session to me@startup.com and tails application log
+$ fs tail staging_2       # opens SSH session to me@startup-s2.com and tails application log
+$ fs tail home            # opens SSH session foo@stark.geocities.com and tails application log
+$ fs tail home production # opens SSH session foo@wayne.geocities.com and tails application log
+```
+
+Also useful for local Rails apps (which don't have `default` section in `servers`):
+
+```bash
+$ fs tail                 # runs `tail -f log/*.log` in the current directory
+```
+
 #### `fs ssh`
 
 Open SSH session to a given application (environment).
 
 ```bash
-$ fs ssh                 # opens SSH session to me@startup.com
+$ fs ssh staging         # opens SSH session to me@startup.com
 $ fs ssh staging_2       # opens SSH session to me@startup-s2.com
 $ fs ssh home            # opens SSH session foo@stark.geocities.com
 $ fs ssh home production # opens SSH session foo@wayne.geocities.com

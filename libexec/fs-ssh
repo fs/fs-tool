@@ -3,8 +3,12 @@
 # Summary: Open SSH session to a given application (environment)
 # Help: Open SSH session to a given application (environment).
 # Uses per-project or per-user configuration stored in `.fs.yml`, see README.md for examples.
+# Examples:
+#
+# fs ssh staging # open SSH session to the current application's staging server
+# fs ssh home    # open SSH session to the 'home' server
 
-require File.join(ENV['_FS_ROOT'], 'share', 'fs', 'lib', 'fs_tool')
+require File.join(ENV['_FS_ROOT'], 'share/fs/lib/fs_tool')
 
 ssh_manager = FsTool::SshCommandManager.new
 
@@ -12,6 +16,9 @@ ssh_manager = FsTool::SshCommandManager.new
 if ARGV[0] == '--complete'
   puts ssh_manager.completions
 else
-  ssh_manager.process(*ARGV)
+  begin
+    ssh_manager.process(*ARGV)
+  rescue FsTool::ServerNotFoundException
+    $stderr.puts('unknown application or environment')
+  end
 end
-
