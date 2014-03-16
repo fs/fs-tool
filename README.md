@@ -7,6 +7,25 @@ A legendary command-line tool whose kung fu skills were the stuff of legend.
 
 ## Installation
 
+The best way to get `fs-tool` is via Homebrew.
+
+### Homebrew
+
+```shell
+brew tap fs/fstool
+brew install fs-tool
+```
+
+Or install via URL:
+
+```
+brew install https://raw.github.com/fs/homebrew-fstool/master/fs-tool.rb
+```
+
+And then follow the instructions in `caveats` section.
+
+### Manual
+
 ```bash
 git clone git@github.com:fs/fs-tool.git ~/.fs-tool
 ```
