@@ -182,6 +182,24 @@ Also useful for local Rails apps (which don't have `default` section in `servers
 $ fs tail                 # runs `tail -f log/*.log` in the current directory
 ```
 
+#### `fs grep`
+
+Search in the application logs.
+
+```bash
+$ fs grep staging foo     # opens SSH session to me@startup.com and greps 'foo' in application log
+$ fs grep staging_2 bar   # opens SSH session to me@startup-s2.com and greps 'bar' in application log
+$ fs grep home baz        # opens SSH session foo@stark.geocities.com and greps 'baz' in application log
+$ fs grep home production world # opens SSH session foo@wayne.geocities.com and greps 'world' in application log
+```
+
+Also useful for local Rails apps (which don't have `default` section in `servers`):
+
+```bash
+$ fs grep happiness       # greps 'happiness' in log/*.log
+```
+
+
 #### `fs ssh`
 
 Open SSH session to a given application (environment).
