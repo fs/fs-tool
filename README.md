@@ -59,6 +59,8 @@ $ fs wisdom
 Great Work is a Matter of Pride
 ```
 
+**PRO tip:** You can add this command to your `.zlogin` file via `echo "fs wisdom" > ~/.zlogin` and get all the awesome quotes on your shell's startup.
+
 ### `fs gh`
 
 Open current github repo in browser
