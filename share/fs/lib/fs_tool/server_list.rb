@@ -10,6 +10,8 @@ class FsTool::ServerList
   def find(*args)
     if args.length == 0
       @servers['default']
+    elsif server = @servers[args[0]]
+      server
     else
       @servers[args.join(' ')]
     end
