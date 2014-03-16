@@ -8,6 +8,9 @@ class FsTool::ServerList
   end
 
   def find(*args)
+    # TODO: this behaviour is suitable only for `fs ssh` subcommand. It may confuse user.
+    # Running `fs c` in application with `default` server in `.fs.yml`
+    # will open _remote_ console.
     if args.length == 0
       @servers['default']
     elsif server = @servers[args[0]]
