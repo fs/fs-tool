@@ -123,7 +123,7 @@ stored in `.fs.yml`, for example:
 # .fs.yml
 servers:
  defaults: &defaults
-   address: me@startup.com
+   address: me@startup-s1.com
    environment: staging
    root: /data/application
  staging:
@@ -149,7 +149,7 @@ servers:
 Run remote Rails console attached to a given application (environment).
 
 ```bash
-$ fs c staging         # opens SSH session to me@startup.com and runs `rails c` in app root
+$ fs c staging         # opens SSH session to me@startup-s1.com and runs `rails c` in app root
 $ fs c production      # opens SSH session to me@startup.com and runs `rails c` in app root
 $ fs c home            # opens SSH session foo@stark.geocities.com and runs `rails c` in app root
 $ fs c                 # runs `bundle exec rails c` in the current directory
@@ -160,7 +160,7 @@ $ fs c                 # runs `bundle exec rails c` in the current directory
 Display the recent application logs in realtime.
 
 ```bash
-$ fs tail staging         # opens SSH session to me@startup.com and tails application log
+$ fs tail staging         # opens SSH session to me@startup-s1.com and tails application log
 $ fs tail production      # opens SSH session to me@startup.com and tails application log
 $ fs tail home            # opens SSH session foo@stark.geocities.com and tails application log
 $ fs tail                 # runs `tail -f log/*.log` in the current directory
@@ -171,7 +171,7 @@ $ fs tail                 # runs `tail -f log/*.log` in the current directory
 Search in the application logs.
 
 ```bash
-$ fs grep staging foo     # opens SSH session to me@startup.com and greps 'foo' in application log
+$ fs grep staging foo     # opens SSH session to me@startup-s1.com and greps 'foo' in application log
 $ fs grep production bar  # opens SSH session to me@startup.com and greps 'bar' in application log
 $ fs grep home baz        # opens SSH session foo@stark.geocities.com and greps 'baz' in application log
 $ fs grep happiness       # greps 'happiness' in log/*.log
@@ -182,7 +182,7 @@ $ fs grep happiness       # greps 'happiness' in log/*.log
 Open SSH session to a given application (environment).
 
 ```bash
-$ fs ssh staging         # opens SSH session to me@startup.com
+$ fs ssh staging         # opens SSH session to me@startup-s1.com
 $ fs ssh production      # opens SSH session to me@startup.com
 $ fs ssh home            # opens SSH session foo@stark.geocities.com
 ```
