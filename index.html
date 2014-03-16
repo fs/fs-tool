@@ -103,20 +103,20 @@ $ <span class="fu">fs setup static &lt;project name&gt;</span>
 
   <article id="installation">
     <h2>Installation &amp; Usage</h2>
-    <pre><code>git clone git@github.com:fs/fs-tool.git ~/.fs-tool</code></pre>
+    <p>
+      The best way to get <code>fs-tool</code> is via Homebrew.
+    </p>
+    <pre><code>brew tap fs/fstool
+brew install fs-tool</code></pre>
 
-    <p>Bash users:</p>
-    <pre><code>echo 'eval "$($HOME/.fs-tool/bin/fs init -)"' >> ~/.bash_profile
-exec bash</code></pre>
+    <p>
+      And then follow the instructions in `caveats` section.
+    </p>
 
-    <p>Zsh users:</p>
-    <pre><code>echo 'eval "$($HOME/.fs-tool/bin/fs init -)"' >> ~/.zshenv
-source ~/.zshenv</code></pre>
-
-     <p>
-       See more information about the project and available commands in our
-       <a href="https://github.com/fs/fs-tool#commands">Github repo</a>.
-     </p>
+    <p>
+      See more information about the project and available commands in our
+      <a href="https://github.com/fs/fs-tool#commands">Github repo</a>.
+    </p>
   </article>
 
   <footer id="footer">
@@ -130,9 +130,9 @@ source ~/.zshenv</code></pre>
   <script src="http://yandex.st/jquery/2.1.0/jquery.min.js"></script>
   <script src="js/jquery.smooth-scroll.min.js"></script>
   <script>
-  $(function() {
-    $('.learn-more a, .smooth').smoothScroll();
-  });
+    $(function() {
+      $('.learn-more a, .smooth').smoothScroll();
+    });
   </script>
 </body>
 </html>
