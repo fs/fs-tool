@@ -68,6 +68,35 @@ $ <span class="fu">fs gh show &lt;commit_id&gt;</span>
 # opens commit &lt;commit_id&gt; on github</code></pre>
   </article>
 
+  <article id="ssh">
+    <h2>The Sword of Heroes</h2>
+    <p>
+      <code>fs</code> includes subcommands for day-to-day support issues.
+      See <a href="https://github.com/fs/fs-tool#remote-commands">documentation on remote commands</a>
+      for additional examples and configuration.
+    </p>
+    <pre><code>$ <span class="fu">fs c staging</span>
+# runs remote Rails console over SSH
+
+$ <span class="fu">fs c</span>
+# runs `bundle exec rails c` in the current directory
+
+$ <span class="fu">fs tail staging</span>
+# displays recent remote application logs in realtime
+
+$ <span class="fu">fs tail</span>
+# runs `tail -f log/*.log` in the current directory
+
+$ <span class="fu">fs grep staging foo</span>
+# greps 'foo' in remote application log
+
+$ <span class="fu">fs grep bar</span>
+# greps 'bar' in log/*.log
+
+$ <span class="fu">fs ssh staging</span>
+# opens SSH session to staging server</code></pre>
+  </article>
+
   <article id="guides">
     <h2>The Power of the Dragon Scroll</h2>
     <p>
