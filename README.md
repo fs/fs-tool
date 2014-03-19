@@ -174,7 +174,7 @@ Search in the application logs.
 $ fs grep staging foo     # opens SSH session to me@startup-s1.com and greps 'foo' in application log
 $ fs grep production bar  # opens SSH session to me@startup.com and greps 'bar' in application log
 $ fs grep home baz        # opens SSH session foo@stark.geocities.com and greps 'baz' in application log
-$ fs grep happiness       # greps 'happiness' in log/*.log
+$ fs grep happiness       # greps 'happiness' in log/development.log
 ```
 
 #### `fs ssh`
