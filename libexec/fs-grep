@@ -19,7 +19,6 @@ else
   begin
     ssh_manager.process(*ARGV)
   rescue FsTool::ServerNotFoundException
-    # TODO: questionable. Do we usually grep anything in test.log?
-    exec("grep -C 2 '#{ARGV.join(' ')}' log/*.log")
+    exec("grep -C 2 '#{ARGV.join(' ')}' log/development.log")
   end
 end
