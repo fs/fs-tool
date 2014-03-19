@@ -38,6 +38,16 @@ describe FsTool::SshCommandManager do
           command_manager.process('foo')
         end
       end
+
+      context 'and command contains %{subject}' do
+        let(:command) { "echo %{subject}" }
+
+        it 'passes %{subject} to remote command' do
+          command_manager.should_receive(:exec).with("ssh foo@bar.com -t 'echo my cool command'")
+
+          command_manager.process(*%w(foo my cool command))
+        end
+      end
     end
   end
 end

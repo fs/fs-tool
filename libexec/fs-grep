@@ -1,0 +1,24 @@
+#!/usr/bin/env ruby
+# Usage: fs grep [<application>] [<environment>]
+# Summary: Search in the application logs
+# Help: Search in the application logs.
+# Uses per-project or per-user configuration stored in `.fs.yml`, see README.md for examples.
+# Examples:
+#
+# fs grep staging foo # search for 'foo' in remote application logs
+# fs grep bar         # search for 'foo' in local application logs
+
+require File.join(ENV['_FS_ROOT'], 'share/fs/lib/fs_tool')
+
+ssh_manager = FsTool::SshCommandManager.new("grep -C 5 --colour=always '%{subject}' %{root}/log/%{environment}.log")
+
+# Provide fs completions
+if ARGV[0] == '--complete'
+  puts ssh_manager.completions
+else
+  begin
+    ssh_manager.process(*ARGV)
+  rescue FsTool::ServerNotFoundException
+    exec("grep -C 2 '#{ARGV.join(' ')}' log/development.log")
+  end
+end

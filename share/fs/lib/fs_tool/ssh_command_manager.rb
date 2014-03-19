@@ -5,7 +5,8 @@ class FsTool::SshCommandManager
 
   def process(*args)
     if server = @server_list.find(*args)
-      run_on(server, @command)
+      params = command_params(server, args)
+      run_on(server, @command, params)
     else
       raise FsTool::ServerNotFoundException
     end
@@ -17,12 +18,17 @@ class FsTool::SshCommandManager
 
   private
 
-  def run_on(server, command)
+  def run_on(server, command, params = nil)
     if command.nil?
       exec "ssh #{server.address}"
     else
-      exec "ssh #{server.address} -t '#{command % server.params}'"
+      exec "ssh #{server.address} -t '#{command % params}'"
     end
+  end
+
+  def command_params(server, args)
+    subject = args.join(' ').sub(/^#{server.name}/, '').strip
+    server.params.merge(subject: subject)
   end
 end
 

@@ -39,6 +39,12 @@ describe FsTool::ServerList do
       server_list.find('home', 'production').should be
     end
 
+    context 'when server can be found by the first argument' do
+      it 'ignores trailing arguments' do
+        server_list.find('staging', 'foo').should be
+      end
+    end
+
     context 'when name is blank' do
       it 'returns default server' do
         server = server_list.find()
