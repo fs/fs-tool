@@ -77,14 +77,14 @@ $ fs gh search (fs gh s) <query>  # searches in current repo
 $ fs gh show <commit_id>          # opens commit <commit_id> on github
 ```
 
-### `fs setup` (`fs bootstrap`)
+### `fs new` (`fs bootstrap`)
 
 Bootstrap new project from fs/xxx-base templates
 
 ```bash
-$ fs setup rails <project name>  # setup new project using rails-base template
-$ fs setup api <project name>    # setup new project using rails-base-api template
-$ fs setup static <project name> # setup new project using static-base template
+$ fs new rails <project name>  # setup new project using rails-base template
+$ fs new api <project name>    # setup new project using rails-base-api template
+$ fs new static <project name> # setup new project using static-base template
 ```
 
 ### `fs h` (`fs guide`)
