@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-# Usage: fs setup <project-type> <project-name>
+# Usage: fs new <project-type> <project-name>
 # Summary: Bootstrap new project from fs/xxx-base templates
 # Help: Bootstrap new project from fs/xxx-base templates. Examples:
 #
-#  fs setup rails <project name>  # setup new project using rails-base template
-#  fs setup api <project name>    # setup new project using rails-base-api template
-#  fs setup static <project name> # setup new project using static-base template
+#  fs new rails <project name>  # setup new project using rails-base template
+#  fs new api <project name>    # setup new project using rails-base-api template
+#  fs new static <project name> # setup new project using static-base template
 
 function show_next_steps() {
   if [ $? -ne 0 ]; then
