@@ -1,0 +1,75 @@
+#!/usr/bin/env bash
+# Usage: fs new <project-type> <project-name>
+# Summary: Bootstrap new project from fs/xxx-base templates
+# Help: Bootstrap new project from fs/xxx-base templates. Examples:
+#
+#  fs new rails <project name>  # setup new project using rails-base template
+#  fs new api <project name>    # setup new project using rails-base-api template
+#  fs new static <project name> # setup new project using static-base template
+
+function show_next_steps() {
+  if [ $? -ne 0 ]; then
+    exit -1
+  fi
+
+  echo "***********************************************************************************"
+  echo "Next Steps:"
+  echo "  * Update README.md file with info about your project"
+  echo "  * Create your new repo on GitHub and push master into it:"
+  echo "      git remote add origin git@github.com:[MY-GITHUB-ACCOUNT]/[MY-NEW-PROJECT].git"
+  echo "  * Make sure master branch is tracking origin repo:"
+  echo "      git push -u origin master"
+  echo "***********************************************************************************"
+}
+
+function bootstrap_rails_base() {
+  git clone git@github.com:fs/rails-base.git $1
+  cd $1
+  echo "Removing remote..."
+  git remote rm origin
+  echo "Preparing README.md template..."
+  mv doc/README_TEMPLATE.md README.md
+  bin/bootstrap
+
+  show_next_steps
+}
+
+function bootstrap_rails_base_api() {
+  git clone git@github.com:fs/rails-base-api.git $1
+  cd $1
+  echo "Removing remote..."
+  git remote rm origin
+  echo "Preparing README.md template..."
+  echo "Write down info about your project" >> README.md
+  bin/bootstrap
+
+  show_next_steps
+}
+
+function bootstrap_static_base() {
+  template_name="fs-static-base"
+  if [ ! -d ~/.middleman/$template_name ]; then
+    git clone git@github.com:fs/static-base.git ~/.middleman/$template_name
+  fi
+
+  middleman init $1 --template=$template_name
+  cd $1
+  bin/bootstrap
+
+  show_next_steps
+}
+
+case $1 in
+  "rails" )
+    bootstrap_rails_base $2;;
+  "api" )
+    bootstrap_rails_base_api $2;;
+  "static" )
+    bootstrap_static_base $2;;
+# Provide fs completions
+  "--complete" )
+  echo rails
+  echo api
+  echo static
+  ;;
+esac
