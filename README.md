@@ -196,3 +196,12 @@ $ fs issues                      # opens Flatstack issues on github
 $ fs pulls (fs prs)              # opens public Flastack pull requests on github
 $ fs pulls private               # opens private Flatstack pull requests on github
 ```
+
+## Credits
+
+FS Tools is maintained by [Vasily Polovnyov](http://github.com/vast).
+It was written by [Flatstack](http://www.flatstack.com) with the help of our
+[contributors](http://github.com/fs/fs-tool/contributors).
+
+
+[![Flatstack](http://www.flatstack.com/assets/images/logo.png)](http://www.flatstack.com)
