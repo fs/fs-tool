@@ -199,7 +199,7 @@ $ fs pulls private               # opens private Flatstack pull requests on gith
 
 ## Credits
 
-Rails Base is maintained by [Vasily Polovnyov](http://github.com/vast).
+FS Tools is maintained by [Vasily Polovnyov](http://github.com/vast).
 It was written by [Flatstack](http://www.flatstack.com) with the help of our
 [contributors](http://github.com/fs/fs-tool/contributors).
 
