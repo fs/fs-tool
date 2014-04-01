@@ -15,7 +15,7 @@ set -e
 #    fs gh show <commit_id>          # opens commit <commit_id> on github
 
 remote_url=$(git config --get remote.origin.url)
-github_repo=$(echo $remote_url | sed 's/.*github\.com[:/]\(.*\)\.git.*/\1/')
+github_repo=$(echo $remote_url | sed 's/^[^:]*[:/]\(.*\)\.git.*/\1/')
 
 function open_github {
   open "https://github.com/$github_repo/$1"
