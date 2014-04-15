@@ -14,4 +14,12 @@ class FsTool::Server
       root: root
     }
   end
+
+  def run(command = nil)
+    if command
+      exec("ssh #{address} -t '#{command}'")
+    else
+      exec("ssh #{address}")
+    end
+  end
 end
