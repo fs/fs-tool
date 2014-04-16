@@ -24,7 +24,7 @@ server, params = ssh_manager.parse(*ARGV)
 
 if server
   if params.args.empty?
-    server.run("tail -f log/#{params.environment}.log")
+    server.run("tail -f log/#{params.env}.log")
   else
     files = params.args.map { |name| "log/#{name}" }
     server.run("tail -f #{files.join(' ')}")

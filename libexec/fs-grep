@@ -23,7 +23,7 @@ server, params = ssh_manager.parse(*ARGV)
 
 if server
   query = params.args.join(' ')
-  server.run("grep -C 5 --colour=always '#{query}' log/#{params.environment}.log")
+  server.run("grep -C 5 --colour=always '#{query}' log/#{params.env}.log")
 else
   exec("grep -C 2 '#{ARGV.join(' ')}' log/development.log")
 end

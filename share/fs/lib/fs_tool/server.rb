@@ -1,5 +1,6 @@
 class FsTool::Server
   attr_reader :name, :environment, :address, :root
+  alias_method :env, :environment
 
   def initialize(params = {})
     params.each do |key, value|
@@ -11,6 +12,7 @@ class FsTool::Server
     {
       name: name,
       environment: environment,
+      env: environment,
       root: root
     }
   end

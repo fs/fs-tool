@@ -15,6 +15,7 @@ describe FsTool::Server do
 
     its(:name) { should == 'default' }
     its(:environment) { should == 'staging' }
+    its(:env) { should == 'staging' }
     its(:root) { should == '/home/staging/app' }
     its(:address) { should == 'foo@bar.com' }
   end
@@ -23,7 +24,7 @@ describe FsTool::Server do
     subject { described_class.new(server_params).params }
 
     it { should be_a_kind_of(Hash) }
-    its(:keys) { should =~ [:name, :environment, :root] }
+    its(:keys) { should =~ [:name, :environment, :root, :env] }
   end
 
   describe '#open_ssh_session' do
