@@ -26,10 +26,10 @@ describe FsTool::SshCommandManager do
 
       its(:first) { should == server }
 
-      context 'command params' do
+      context 'command args' do
         subject { command_manager.parse(*args)[1] }
 
-        its([:subject]) { should == 'my cool command' }
+        its([:args]) { should == %w(my cool command) }
         its([:environment]) { should == 'baz' }
         its([:root]) { should == '/var' }
       end

@@ -16,7 +16,7 @@ class FsTool::SshCommandManager
   private
 
   def command_params(server, args)
-    subject = args.join(' ').sub(/^#{server.name}/, '').strip
-    server.params.merge(subject: subject)
+    command_args = args.join('###').sub(/^#{server.name}###/, '').strip.split('###')
+    server.params.merge(args: command_args)
   end
 end
