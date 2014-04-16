@@ -31,7 +31,7 @@ describe FsTool::Server do
 
     context 'when command is blank' do
       it 'opens SSH session to server' do
-        server.should_receive(:exec).with('ssh foo@bar.com')
+        server.should_receive(:exec).with("ssh foo@bar.com -t 'cd /home/staging/app; $SHELL'")
 
         server.run
       end
@@ -39,7 +39,7 @@ describe FsTool::Server do
 
     context 'when command is NOT blank' do
       it 'opens runs specified command on server' do
-        server.should_receive(:exec).with("ssh foo@bar.com -t 'uname -a'")
+        server.should_receive(:exec).with("ssh foo@bar.com -t 'cd /home/staging/app; uname -a'")
 
         server.run('uname -a')
       end

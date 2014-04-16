@@ -17,9 +17,9 @@ class FsTool::Server
 
   def run(command = nil)
     if command
-      exec("ssh #{address} -t '#{command}'")
+      exec("ssh #{address} -t 'cd #{root}; #{command}'")
     else
-      exec("ssh #{address}")
+      exec("ssh #{address} -t 'cd #{root}; $SHELL'")
     end
   end
 end
