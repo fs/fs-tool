@@ -10,15 +10,20 @@
 
 require File.join(ENV['_FS_ROOT'], 'share/fs/lib/fs_tool')
 
-ssh_manager = FsTool::SshCommandManager.new("grep -C 5 --colour=always '%{subject}' %{root}/log/%{environment}.log")
+ssh_manager = FsTool::SshCommandManager.new
 
 # Provide fs completions
 if ARGV[0] == '--complete'
   puts ssh_manager.completions
+  exit
+end
+
+
+server, params = ssh_manager.parse(*ARGV)
+
+if server
+  query = params.args.join(' ')
+  server.run("grep -C 5 --colour=always '#{query}' log/#{params.environment}.log")
 else
-  begin
-    ssh_manager.process(*ARGV)
-  rescue FsTool::ServerNotFoundException
-    exec("grep -C 2 '#{ARGV.join(' ')}' log/development.log")
-  end
+  exec("grep -C 2 '#{ARGV.join(' ')}' log/development.log")
 end
