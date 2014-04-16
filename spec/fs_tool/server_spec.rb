@@ -26,6 +26,16 @@ describe FsTool::Server do
     its(:keys) { should =~ [:name, :environment, :root] }
   end
 
+  describe '#open_ssh_session' do
+    let(:server) { described_class.new(server_params) }
+
+    it 'opens SSH session to server' do
+      server.should_receive(:exec).with("ssh foo@bar.com -t 'cd /home/staging/app; $SHELL'")
+
+      server.open_ssh_session
+    end
+  end
+
   describe '#run' do
     let(:server) { described_class.new(server_params) }
 

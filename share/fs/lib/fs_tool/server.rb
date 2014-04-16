@@ -19,7 +19,11 @@ class FsTool::Server
     if command
       exec("ssh #{address} -t 'cd #{root}; #{command}'")
     else
-      exec("ssh #{address} -t 'cd #{root}; $SHELL'")
+      open_ssh_session
     end
+  end
+
+  def open_ssh_session
+    exec("ssh #{address} -t 'cd #{root}; $SHELL'")
   end
 end
