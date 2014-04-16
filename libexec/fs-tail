@@ -5,20 +5,30 @@
 # Uses per-project or per-user configuration stored in `.fs.yml`, see README.md for examples.
 # Examples:
 #
-# fs tail staging # display remote application logs
-# fs tail         # display local application logs
+# fs tail staging                 # display remote application logs
+# fs tail staging delayed_job.log # display remote delayed job logs
+# fs tail                         # display local application logs
 
 require File.join(ENV['_FS_ROOT'], 'share/fs/lib/fs_tool')
 
-ssh_manager = FsTool::SshCommandManager.new("cd %{root}; tail -f log/%{environment}.log")
+ssh_manager = FsTool::SshCommandManager.new
 
 # Provide fs completions
 if ARGV[0] == '--complete'
   puts ssh_manager.completions
-else
-  begin
-    ssh_manager.process(*ARGV)
-  rescue FsTool::ServerNotFoundException
-    exec('tail -f log/*.log')
+  exit
+end
+
+
+server, params = ssh_manager.parse(*ARGV)
+
+if server
+  if params.args.empty?
+    server.run("tail -f log/#{params.environment}.log")
+  else
+    files = params.args.map { |name| "log/#{name}" }
+    server.run("tail -f #{files.join(' ')}")
   end
+else
+  exec('tail -f log/*.log')
 end
