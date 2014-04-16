@@ -10,15 +10,19 @@
 
 require File.join(ENV['_FS_ROOT'], 'share/fs/lib/fs_tool')
 
-ssh_manager = FsTool::SshCommandManager.new("cd %{root}; RAILS_ENV=%{environment} bundle exec rails c")
+ssh_manager = FsTool::SshCommandManager.new
 
 # Provide fs completions
 if ARGV[0] == '--complete'
   puts ssh_manager.completions
+  exit
+end
+
+
+server, params = ssh_manager.parse(*ARGV)
+
+if server
+  server.run("RAILS_ENV=#{params.env} bundle exec rails c")
 else
-  begin
-    ssh_manager.process(*ARGV)
-  rescue FsTool::ServerNotFoundException
-    exec('bundle exec rails c')
-  end
+  exec('bundle exec rails c')
 end

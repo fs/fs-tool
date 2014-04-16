@@ -161,6 +161,7 @@ Display the recent application logs in realtime.
 
 ```bash
 $ fs tail staging         # opens SSH session to me@startup-s1.com and tails application log
+$ fs tail staging dj.log  # opens SSH session to me@startup-s1.com and tails dj.log
 $ fs tail production      # opens SSH session to me@startup.com and tails application log
 $ fs tail home            # opens SSH session foo@stark.geocities.com and tails application log
 $ fs tail                 # runs `tail -f log/*.log` in the current directory
