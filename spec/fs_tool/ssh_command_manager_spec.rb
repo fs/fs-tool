@@ -29,9 +29,15 @@ describe FsTool::SshCommandManager do
       context 'command args' do
         subject { command_manager.parse(*args)[1] }
 
-        its([:args]) { should == %w(my cool command) }
-        its([:environment]) { should == 'baz' }
-        its([:root]) { should == '/var' }
+        its(:args) { should == %w(my cool command) }
+        its(:environment) { should == 'baz' }
+        its(:root) { should == '/var' }
+
+        context 'and there are only server name in args' do
+          let(:args) { %w(foo) }
+
+          its(:args) { should == [] }
+        end
       end
     end
   end
