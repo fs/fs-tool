@@ -4,15 +4,15 @@ set -e
 # Summary: Open current github repo in browser
 # Help: This can be used to open current repo on github. Available subcommands:
 #
-#    fs gh                           # opens current repo on github
-#    fs gh pulls (fs gh p)           # opens current repo's pull requests on github
-#    fs gh issues (fs gh i)          # opens current repo's issues on github
-#    fs gh pulls new (fs gh p n)     # opens new pull request in current repo on github
-#    fs gh issues new (fs gh i n)    # opens new issue in current repo on github
-#    fs gh pulls closed (fs gh p c)  # opens current repo's closed pull requests on github
-#    fs gh issues closed (fs gh i c) # opens current repo's closed issues on github
-#    fs gh search (fs gh s) <query>  # searches in current repo
-#    fs gh show <commit_id>          # opens commit <commit_id> on github
+#    fs gh                              # opens current repo on github
+#    fs gh p                            # opens current Pull Request (or "Create Pull Request" page)
+#    fs gh pulls                        # opens current repo's pull requests on github
+#    fs gh issues (fs gh i)             # opens current repo's issues on github
+#    fs gh issues new (fs gh i n)       # opens new issue in current repo on github
+#    fs gh pulls closed (fs gh pulls c) # opens current repo's closed pull requests on github
+#    fs gh issues closed (fs gh i c)    # opens current repo's closed issues on github
+#    fs gh search (fs gh s) <query>     # searches in current repo
+#    fs gh show <commit_id>             # opens commit <commit_id> on github
 
 remote_url=$(git config --get remote.origin.url)
 github_repo=$(echo $remote_url | sed 's/^[^:]*[:/]\(.*\)\.git.*/\1/')
@@ -21,13 +21,15 @@ function open_github {
   open "https://github.com/$github_repo/$1"
 }
 
+function process_current_pull {
+  branch_name=$(git rev-parse --abbrev-ref HEAD)
+  open_github "pull/$branch_name"
+}
+
 function process_pulls {
   case $1 in
     "" )
       open_github "pulls?state=open";;
-    "new" | "n" )
-      branch_name=$(git rev-parse --abbrev-ref HEAD)
-      open_github "compare/$branch_name";;
     "closed" | "c" )
       open_github "pulls?state=closed";;
   esac
@@ -47,7 +49,9 @@ function process_issues {
 case $1 in
   "" )
     open_github;;
-  "pulls" | "p" )
+  "p" )
+    process_current_pull;;
+  "pulls" )
     process_pulls $2;;
   "issues" | "i" )
     process_issues $2;;
@@ -58,6 +62,7 @@ case $1 in
 # FIXME: second level completion is broken - https://github.com/basecamp/sub/issues/7
 # Provide fs completions
   "--complete" )
+    echo p
     echo pulls
     echo issues
     echo search
