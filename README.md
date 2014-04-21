@@ -77,6 +77,11 @@ $ fs gh search (fs gh s) <query>     # searches in current repo
 $ fs gh show <commit_id>             # opens commit <commit_id> on github
 ```
 
+**PRO tip:** You can add an alias for the rockstar `fs gh p` command:
+```bash
+alias pr='fs gh p'
+```
+
 ### `fs new` (`fs bootstrap`)
 
 Bootstrap new project from fs/xxx-base templates
