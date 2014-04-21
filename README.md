@@ -144,6 +144,15 @@ servers:
     root: /var/www/stark
 ```
 
+#### `fs init-config` (`fs ic`)
+
+Creates an example .fs.yml config file in a current project directory or in home directory.
+
+```bash
+fs init-config            # create .fs.yml in a current directory
+fs init-config --global   # create .fs.yml in home directory
+```
+
 #### `fs console` (`fs c`)
 
 Run remote Rails console attached to a given application (environment).
