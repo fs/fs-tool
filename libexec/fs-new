@@ -47,13 +47,10 @@ function bootstrap_rails_base_api() {
 }
 
 function bootstrap_static_base() {
-  template_name="fs-static-base"
-  if [ ! -d ~/.middleman/$template_name ]; then
-    git clone git@github.com:fs/static-base.git ~/.middleman/$template_name
-  fi
-
-  middleman init $1 --template=$template_name
+  git clone git@github.com:fs/static-base.git $1
   cd $1
+  echo "Removing remote..."
+  git remote rm origin
   bin/bootstrap
 
   show_next_steps
