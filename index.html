@@ -43,19 +43,19 @@ Be Curious &amp; Never Stop Learning
     <pre><code>$ <span class="fu">fs gh</span>
 # opens current repo on github
 
-$ <span class="fu">fs gh pulls</span> (fs gh p)
+$ <span class="fu">fs gh p</span>
+# opens current Pull Request (or "Create Pull Request" page)
+
+$ <span class="fu">fs gh pulls</span>
 # opens current repo's pull requests on github
 
 $ <span class="fu">fs gh issues</span> (fs gh i)
 # opens current repo's issues on github
 
-$ <span class="fu">fs gh pulls new</span> (fs gh p n)
-# opens new pull request in current repo on github
-
 $ <span class="fu">fs gh issues new</span> (fs gh i n)
 # opens new issue in current repo on github
 
-$ <span class="fu">fs gh pulls closed</span> (fs gh p c)
+$ <span class="fu">fs gh pulls closed</span> (fs gh pulls c)
 # opens current repo's closed pull requests on github
 
 $ <span class="fu">fs gh issues closed</span> (fs gh i c)
@@ -66,6 +66,9 @@ $ <span class="fu">fs gh search</span> (fs gh s) &lt;query&gt;
 
 $ <span class="fu">fs gh show &lt;commit_id&gt;</span>
 # opens commit &lt;commit_id&gt; on github</code></pre>
+
+  <p><strong>PRO tip:</strong> Add an alias for the rockstar <code>fs gh p</code> command:</p>
+  <pre><code>alias pr='fs gh p'</code></pre>
   </article>
 
   <article id="ssh">
@@ -83,6 +86,9 @@ $ <span class="fu">fs c</span>
 
 $ <span class="fu">fs tail staging</span>
 # displays recent remote application logs in realtime
+
+$ <span class="fu">fs tail staging delayed_job.log</span>
+# displays remote delayed job logs in realtime
 
 $ <span class="fu">fs tail</span>
 # runs `tail -f log/*.log` in the current directory
