@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+# Usage: fs init-config
+# Summary: Creates an example .fs.yml config file in a current project directory
+# Help: Creates an example .fs.yml config file in a current project directory
+# Examples:
+#
+# fs init-config          # create .fs.yml in a current directory
+# fs init-config --global # create .fs.yml in home directory
+
+case $1 in
+  "" )
+  ROOT_DIR=$(pwd)
+  PROJECT_NAME=$(basename $ROOT_DIR)
+  ;;
+  "--global" )
+  ROOT_DIR=$HOME
+  PROJECT_NAME=project
+  ;;
+esac
+
+USER=$(whoami)
+
+export USER ROOT_DIR PROJECT_NAME
+
+cat <<EOF > $ROOT_DIR/.fs.yml
+servers:
+  staging:
+    address: $USER@staging.$PROJECT_NAME.com
+    environment: staging
+    root: $ROOT_DIR
+  production:
+    address: $USER@$PROJECT_NAME.com
+    environment: production
+    root: $ROOT_DIR
+EOF
