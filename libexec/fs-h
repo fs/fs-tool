@@ -17,7 +17,7 @@ require 'yaml'
 require 'uri'
 
 class GuidesManager
-  attr_reader :root_url, :paths
+  attr_reader :search_url_template, :guides_url_template, :paths
 
   def initialize(path)
     load_yaml(path)
@@ -28,25 +28,27 @@ class GuidesManager
   end
 
   def completions
-    @paths.keys.sort
+    paths.keys.sort
   end
 
   private
 
   def guides_url(*args)
-    url = @paths[args.join('_')] || @paths[args.join(' ')]
+    url = paths[args.join('_')] || paths[args.join]
 
-    if url.nil?
-      URI.escape([@root_url, 'search?', 'q=', args.join(' ')].join)
+    if url
+      guides_url_template % url
     else
-      [@root_url, 'tree/master/', url].join
+      URI.escape(search_url_template % args.join(' '))
     end
   end
 
   def load_yaml(path)
     data = YAML.load_file(path)
+
     @paths = data['paths']
-    @root_url = data['root_url']
+    @search_url_template = data['search_url_template']
+    @guides_url_template = data['guides_url_template']
   end
 end
 
