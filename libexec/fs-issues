@@ -5,4 +5,4 @@
 
 set -e
 
-open "https://github.com/organizations/fs/dashboard/issues"
+fs-open "https://github.com/organizations/fs/dashboard/issues"

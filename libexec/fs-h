@@ -24,7 +24,7 @@ class GuidesManager
   end
 
   def process(*args)
-    exec("open #{guides_url(args)}")
+    exec("fs-open #{guides_url(args)}")
   end
 
   def completions
