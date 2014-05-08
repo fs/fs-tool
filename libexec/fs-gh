@@ -18,7 +18,7 @@ remote_url=$(git config --get remote.origin.url)
 github_repo=$(echo $remote_url | sed 's/^.*github.*[\/|:]\(.*\/.*\)\.git.*/\1/')
 
 function open_github {
-  open "https://github.com/$github_repo/$1"
+  fs-open "https://github.com/$github_repo/$1"
 }
 
 function process_current_pull {

@@ -15,10 +15,10 @@ if [ "$1" = "--complete" ]; then
 else
   case $1 in
     "" | "public")
-    open "https://github.com/organizations/fs/dashboard/pulls/public"
+    fs-open "https://github.com/organizations/fs/dashboard/pulls/public"
     ;;
     "private")
-    open "https://github.com/organizations/fs/dashboard/pulls/private"
+    fs-open "https://github.com/organizations/fs/dashboard/pulls/private"
     ;;
   esac
 fi

@@ -5,4 +5,4 @@
 
 set -e
 
-open "https://github.com/orgs/fs/teams"
+fs-open "https://github.com/orgs/fs/teams"
