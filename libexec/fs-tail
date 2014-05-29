@@ -29,6 +29,8 @@ if server
     files = params.args.map { |name| "log/#{name}" }
     server.run("tail -f #{files.join(' ')}")
   end
+elsif ARGV.length > 0
+  abort('unknown application or environment')
 else
   exec('tail -f log/*.log')
 end

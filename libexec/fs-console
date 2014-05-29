@@ -23,6 +23,8 @@ server, params = ssh_manager.parse(*ARGV)
 
 if server
   server.run("RAILS_ENV=#{params.env} bundle exec rails c")
+elsif ARGV.length > 0
+  abort('unknown application or environment')
 else
   exec('bundle exec rails c')
 end
