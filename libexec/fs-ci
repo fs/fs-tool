@@ -18,6 +18,8 @@ case $1 in
   ;;
 esac
 
+current_branch=$(echo $current_branch | tr '[:upper:]' '[:lower:]')
+
 ci_url=$(grep "ci:" .fs.yml | sed 's/ci://' | sed 's/"//g' | tr -d ' ' | sed "s/%{branch}/$current_branch/")
 
 fs-open $ci_url
