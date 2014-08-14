@@ -13,6 +13,11 @@ case $1 in
   "" )
     current_branch=$(git rev-parse --abbrev-ref HEAD)
   ;;
+# Provide fs completions
+  "--complete" )
+    git branch | sed 's/* /  /' | awk '{print $1}'
+    exit
+  ;;
   * )
     current_branch=$1
   ;;
