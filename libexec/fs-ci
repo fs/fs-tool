@@ -26,7 +26,15 @@ esac
 BRANCH_NAME=$current_branch
 branch_name=$(echo $current_branch | tr '[:upper:]' '[:lower:]')
 
-ci_url=$(grep "ci:" .fs.yml | sed 's/ci://' | sed 's/"//g' | tr -d ' ')
+ci_url=$(grep "ci:" .fs.yml 2> /dev/null | sed 's/ci://' | sed 's/"//g' | tr -d ' ')
 ci_url=$(echo $ci_url | sed "s/%{branch}/$branch_name/" | sed "s/%{BRANCH}/$BRANCH_NAME/")
 
-fs-open $ci_url
+if [ -n "$ci_url" ]; then
+  fs-open $ci_url
+else
+  echo "Set 'ci' key in .fs.yml:
+
+# .fs.yml
+ci: \"https://semaphoreapp.com/username/project/branches/%{branch}\"
+"
+fi
