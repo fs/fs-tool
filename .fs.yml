@@ -1,0 +1,1 @@
+ci: "https://semaphoreapp.com/vast/fs-tool/branches/%{branch}"

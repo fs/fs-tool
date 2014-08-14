@@ -3,7 +3,6 @@ fs
 
 A legendary command-line tool whose kung fu skills were the stuff of legend.
 
-[![Build Status](https://travis-ci.org/fs/fs-tool.png?branch=master)](https://travis-ci.org/fs/fs-tool)
 
 ## Installation
 
