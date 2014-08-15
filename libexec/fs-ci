@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+set -e
+# Usage: fs ci [<branch>]
+# Summary: Open branch's CI page in browser
+# Help: This can be used to open current branch (or any specified branch) on CI service (Semaphore)
+# Requires `ci` parameter to be set in `.fs.yml`.
+# Examples:
+#
+#    fs ci            # opens current branch on CI service
+#    fs ci master     # opens "master" branch on CI service
+
+case $1 in
+  "" )
+    current_branch=$(git rev-parse --abbrev-ref HEAD)
+  ;;
+# Provide fs completions
+  "--complete" )
+    git branch | sed 's/* /  /' | awk '{print $1}'
+    exit
+  ;;
+  * )
+    current_branch=$1
+  ;;
+esac
+
+BRANCH_NAME=$current_branch
+branch_name=$(echo $current_branch | tr '[:upper:]' '[:lower:]')
+
+ci_url=$(grep "ci:" .fs.yml 2> /dev/null | sed 's/ci://' | sed 's/"//g' | tr -d ' ')
+ci_url=$(echo $ci_url | sed "s/%{branch}/$branch_name/" | sed "s/%{BRANCH}/$BRANCH_NAME/")
+
+if [ -n "$ci_url" ]; then
+  fs-open $ci_url
+else
+  echo "Set 'ci' key in .fs.yml:
+
+# .fs.yml
+ci: \"https://semaphoreapp.com/username/project/branches/%{branch}\"
+"
+fi

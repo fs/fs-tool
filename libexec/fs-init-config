@@ -23,6 +23,7 @@ USER=$(whoami)
 export USER ROOT_DIR PROJECT_NAME
 
 cat <<EOF > $ROOT_DIR/.fs.yml
+ci: "https://semaphoreapp.com/$USER/$PROJECT_NAME/branches/%{branch}"
 servers:
   staging:
     address: $USER@staging.$PROJECT_NAME.com
