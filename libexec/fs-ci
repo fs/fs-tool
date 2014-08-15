@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 set -e
 # Usage: fs ci [<branch>]
-# Summary: Open branch CI page in browser
-# Help: This can be used to open current branch (or any specified branch) on CI (Semaphore)
+# Summary: Open branch's CI page in browser
+# Help: This can be used to open current branch (or any specified branch) on CI service (Semaphore)
 # Requires `ci` parameter to be set in `.fs.yml`.
 # Examples:
 #
-#    fs ci            # opens current branch on CI
-#    fs ci master     # opens "master" branch on CI
+#    fs ci            # opens current branch on CI service
+#    fs ci master     # opens "master" branch on CI service
 
 case $1 in
   "" )

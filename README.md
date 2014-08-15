@@ -81,6 +81,21 @@ $ fs gh show <commit_id>             # opens commit <commit_id> on github
 alias pr='fs gh p'
 ```
 
+### `fs ci`
+
+Open branch's CI page in browser
+
+```bash
+
+$ fs ci            # opens current branch on CI service
+$ fs ci master     # opens "master" branch on CI service
+```
+
+**PRO tip:** Another killer feature here:
+```bash
+alias ci='fs ci'
+```
+
 ### `fs new` (`fs bootstrap`)
 
 Bootstrap new project from fs/xxx-base templates
