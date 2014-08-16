@@ -13,6 +13,8 @@ paths:
   bug_report: developing/bug-reporting-format
   pairing: developing/pair-programming
   pair_programming: developing/pair-programming
+  continuous_deployment: developing/continuous-deployment
+  deployment: developing/continuous-deployment
   style: best-practices
   style_guide: best-practices
   best_practices: best-practices
