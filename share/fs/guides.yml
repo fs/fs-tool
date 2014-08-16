@@ -11,6 +11,8 @@ paths:
   review: developing/code-reviews
   bug_reports: developing/bug-reporting-format
   bug_report: developing/bug-reporting-format
+  pairing: developing/pair-programming
+  pair_programming: developing/pair-programming
   style: best-practices
   style_guide: best-practices
   best_practices: best-practices
@@ -18,7 +20,12 @@ paths:
   rollbar: services-and-tools/rollbar
   semaphore: services-and-tools/semaphoreapp
   hipchat: services-and-tools/hipchat
-  aws: services-and-tools/aws
+  s3: services-and-tools/s3
+  amazon: services-and-tools/s3
+  ec2: services-and-tools/ec2
+  engine_yard: services-and-tools/engine-yard
+  ey: services-and-tools/engine-yard
+  pivotal_tracker: services-and-tools/pivotal-tracker
   pingdom: services-and-tools/pingdom
   pagerduty: services-and-tools/pagerduty
   logentries: services-and-tools/logentries
