@@ -1,4 +1,4 @@
-fs [![Build Status](https://semaphoreapp.com/api/v1/projects/795820b9-44e1-4885-9b63-23a61ac50bd9/230333/shields_badge.svg)](https://semaphoreapp.com/vast/fs-tool)
+fs [![Build Status](https://semaphoreapp.com/api/v1/projects/b4dc0d0d-324b-4463-a8a3-d3a5c870b383/261440/shields_badge.svg)](https://semaphoreapp.com/fs/fs-tool)
 ==========================================================================
 
 A legendary command-line tool whose kung fu skills were the stuff of legend.
