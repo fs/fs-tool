@@ -216,16 +216,6 @@ $ fs ssh production      # opens SSH session to me@startup.com
 $ fs ssh home            # opens SSH session foo@stark.geocities.com
 ```
 
-### Other commands
-
-```bash
-$ fs news                        # opens Flatstack news feed on github
-$ fs teams (fs team)             # opens Flatstack teams management on github
-$ fs issues                      # opens Flatstack issues on github
-$ fs pulls (fs prs)              # opens public Flastack pull requests on github
-$ fs pulls private               # opens private Flatstack pull requests on github
-```
-
 ## Credits
 
 FS Tools is maintained by [Vasily Polovnyov](http://github.com/vast).
