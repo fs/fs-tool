@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-# Usage: fs issues
-# Summary: Open Flatstack issues on github
-# Help: Open Flatstack issues on github
-
-set -e
-
-fs-open "https://github.com/organizations/fs/dashboard/issues"
