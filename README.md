@@ -223,4 +223,4 @@ It was written by [Flatstack](http://www.flatstack.com) with the help of our
 [contributors](http://github.com/fs/fs-tool/contributors).
 
 
-[![Flatstack](http://www.flatstack.com/assets/images/logo.png)](http://www.flatstack.com)
+[![Flatstack](blob:http://www.flatstack.com/0cc6b11f-6086-47fa-b4fc-c7bf532bcd2b)](http://www.flatstack.com)
