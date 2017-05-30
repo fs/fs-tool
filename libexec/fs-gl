@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+set -e
+# Usage: fs gl [subcommand]
+# Summary: Open current gitlab repo in browser
+# Help: This can be used to open current repo on gitlab. Available subcommands:
+#
+#    fs gl                                # opens current repo on gitlab
+#    fs gl p                              # opens "Create Merge Request" page
+#    fs gl merges                          # opens current repo's merge requests on gitlab
+#    fs gl merges merged (fs gl merges m)   # opens current repo's merged merge requests on gitlab
+#    fs gl merges declined (fs gl merges d) # opens current repo's declined merge requests on gitlab
+
+remote_url=$(git config --get remote.origin.url)
+gitlab_url=$(echo $remote_url | sed 's/@git//;s/:..*//')
+gitlab_repo=$(echo $remote_url | sed 's/^.*gitlab.*[\/|:]\(.*\/.*\)\.git.*/\1/')
+
+function open_gitlab {
+  fs-open "https://$gitlab_url/$gitlab_repo/$1"
+}
+
+function process_new_merge {
+  open_gitlab "merge_requests/new"
+}
+
+function process_merges {
+  case $1 in
+    "" )
+      open_gitlab "merge_requests";;
+    "merged" | "m" )
+      open_gitlab "merge_requests/?state=MERGED";;
+    "declined" | "d" )
+      open_gitlab "merge_requests/?state=DECLINED";;
+  esac
+}
+
+case $1 in
+  "" )
+    open_gitlab;;
+  "p" )
+    process_new_merge;;
+  "merges" )
+    process_merges $2;;
+esac
