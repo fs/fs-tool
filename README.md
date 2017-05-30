@@ -81,6 +81,18 @@ $ fs gh show <commit_id>             # opens commit <commit_id> on github
 alias pr='fs gh p'
 ```
 
+### `fs bb`
+
+Open current bitbucket repo in browser
+
+```bash
+$ fs bb                                # opens current repo on bitbucket
+$ fs bb p                              # opens "Create Pull Request" page
+$ fs bb pulls                          # opens current repo's pull requests on bitbucket
+$ fs bb pulls merged (fs bb pulls m)   # opens current repo's merged pull requests on bitbucket
+$ fs bb pulls declined (fs bb pulls d) # opens current repo's declined pull requests on bitbucket
+```
+
 ### `fs ci`
 
 Open branch's CI page in browser
