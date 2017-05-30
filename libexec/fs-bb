@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+set -e
+# Usage: fs bb [subcommand]
+# Summary: Open current bitbucket repo in browser
+# Help: This can be used to open current repo on bitbucket. Available subcommands:
+#
+#    fs bb                                # opens current repo on bitbucket
+#    fs bb p                              # opens "Create Pull Request" page
+#    fs bb pulls                          # opens current repo's pull requests on bitbucket
+#    fs bb pulls merged (fs bb pulls m)   # opens current repo's merged pull requests on bitbucket
+#    fs bb pulls declined (fs bb pulls d) # opens current repo's declined pull requests on bitbucket
+
+remote_url=$(git config --get remote.origin.url)
+bitbucket_repo=$(echo $remote_url | sed 's/^.*bitbucket.*[\/|:]\(.*\/.*\)\.git.*/\1/')
+
+function open_bitbucket {
+  fs-open "https://bitbucket.org/$bitbucket_repo/$1"
+}
+
+function process_new_pull {
+  open_bitbucket "pull-requests/new"
+}
+
+function process_pulls {
+  case $1 in
+    "" )
+      open_bitbucket "pull-requests";;
+    "merged" | "m" )
+      open_bitbucket "pull-requests/?state=MERGED";;
+    "declined" | "d" )
+      open_bitbucket "pull-requests/?state=DECLINED";;
+  esac
+}
+
+case $1 in
+  "" )
+    open_bitbucket;;
+  "p" )
+    process_new_pull;;
+  "pulls" )
+    process_pulls $2;;
+esac
