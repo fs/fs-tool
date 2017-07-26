@@ -86,15 +86,11 @@ alias pr='fs gh p'
 Open current gitlab repo in browser
 
 ```bash
-$ fs gl                              # opens current repo on gitlab
-$ fs gl p                            # opens current Pull Request (or "Create Pull Request" page)
-$ fs gl pulls                        # opens current repo's pull requests on gitlab
-$ fs gl issues (fs gl i)             # opens current repo's issues on gitlab
-$ fs gl issues new (fs gl i n)       # opens new issue in current repo on gitlab
-$ fs gl pulls closed (fs gl pulls c) # opens current repo's closed pull requests on gitlab
-$ fs gl issues closed (fs gl i c)    # opens current repo's closed issues on gitlab
-$ fs gl search (fs gl s) <query>     # searches in current repo
-$ fs gl show <commit_id>             # opens commit <commit_id> on gitlab
+$ fs gl                                  # opens current repo on gitlab
+$ fs gl p                                # opens "Create Merge Request" page
+$ fs gl merges                           # opens current repo's merge requests on gitlab
+$ fs gl merges merged (fs gl merges m)   # opens current repo's merged merge requests on gitlab
+$ fs gl merges declined (fs gl merges d) # opens current repo's declined merge requests on gitlab
 ```
 
 ### `fs ci`
