@@ -81,6 +81,18 @@ $ fs gh show <commit_id>             # opens commit <commit_id> on github
 alias pr='fs gh p'
 ```
 
+### `fs gl`
+
+Open current gitlab repo in browser
+
+```bash
+$ fs gl                                  # opens current repo on gitlab
+$ fs gl p                                # opens "Create Merge Request" page
+$ fs gl merges                           # opens current repo's merge requests on gitlab
+$ fs gl merges merged (fs gl merges m)   # opens current repo's merged merge requests on gitlab
+$ fs gl merges declined (fs gl merges d) # opens current repo's declined merge requests on gitlab
+```
+
 ### `fs ci`
 
 Open branch's CI page in browser
